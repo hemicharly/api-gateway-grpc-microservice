@@ -12,7 +12,8 @@ gRPC example of crud with typescript and nodejs
 
 ##### 2.1. Start project in mode development
 
-* To create proto interfaces in the project, use the bash command in the `script` folder:
+* To create proto interfaces in the project, use the script `script/protoc.sh`:
+    
     `yarn protoc`
     
 * To start project using docker:
