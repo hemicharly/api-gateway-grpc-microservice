@@ -1,0 +1,86 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "tslint-sonarts",
+        "tslint-config-standard",
+        "tslint-config-prettier"
+    ],
+    "rules": {
+        "class-name": true,
+        "no-console": false,
+        "ordered-imports": true,
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "triple-equals": true,
+        "radix": true,
+        "max-classes-per-file": true,
+        "file-name-casing": [true, "pascal-case"],
+        "variable-name": {
+            "options": [
+                "check-format",
+                "allow-leading-underscore",
+                "allow-pascal-case",
+                "allow-trailing-underscore",
+                "require-const-for-all-caps",
+                "ban-keywords"
+            ]
+        },
+        "no-shadowed-variable": false,
+        "ban-types": true,
+        "no-bitwise" : true,
+        "prefer-for-of": true,
+        "member-ordering": [
+            true,
+            {
+                "order": [
+                    "protected-static-field",
+                    "protected-static-method",
+                    "protected-instance-field",
+                    "protected-constructor",
+                    "protected-instance-method",
+
+                    "public-constructor",
+                    "public-static-field",
+                    "public-static-method",
+                    "public-instance-field",
+                    "public-instance-method",
+
+                    "private-static-field",
+                    "private-static-method",
+                    "private-instance-field",
+                    "private-constructor",
+                    "private-instance-method"
+                ]
+            }
+        ],
+        "no-duplicate-variable": true,
+        "no-duplicate-imports": true,
+        "await-promise": true,
+        "promise-function-async": true,
+        "unnecessary-else": true,
+        "import-spacing": true,
+        "quotemark": [true, "single", "jsx-double"],
+        "no-duplicate-string": false,
+        "no-identical-functions": true,
+        "no-unconditional-jump": true,
+        "no-big-function": true,
+        "prefer-immediate-return": true,
+        "no-invalid-await": true,
+        "arguments-order": true,
+        "mccabe-complexity": true,
+        "cognitive-complexity": true,
+        "consecutive-overloads": true,
+        "use-primitive-type": true,
+        "no-dead-store": true,
+        "max-union-size": true,
+        "no-gratuitous-expressions": true,
+        "no-invariant-return": true,
+        "no-undefined-argument": true
+    },
+    "linterOptions": {
+        "exclude": [
+            "**/*.js"
+        ]
+    }
+}

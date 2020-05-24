@@ -23,3 +23,18 @@ services:
     volumes:
       - ./app-users:/opt/app
     entrypoint: ["entrypoint-server.sh"]
+
+
+  api-gateway-grcp:
+    container_name: api-gateway-grcp
+    build:
+      context: .
+      dockerfile: docker/nodejs/Dockerfile
+    ports:
+      - 3005:3005
+    depends_on:
+      - grpc-customers
+      - grpc-users
+    volumes:
+      - ./app-gateway:/opt/app
+    entrypoint: ["entrypoint-server.sh"]
