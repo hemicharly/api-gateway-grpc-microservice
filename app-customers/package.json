@@ -1,0 +1,32 @@
+{
+  "name": "grpc-customers",
+  "version": "1.0.0",
+  "description": "gRPC typescript start with nodejs example",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx nodemon",
+    "build": "npx tsc --skipLibCheck",
+    "start": "npx tsc --skipLibCheck && node ./dist/server.js",
+    "protoc": "scripts/protoc.sh"
+  },
+  "keywords": [],
+  "author": "Hemicharly Thiago",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "google-protobuf": "^3.12.1",
+    "grpc": "^1.24.2",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.0.0",
+    "@types/google-protobuf": "^3.7.2",
+    "@types/node": "^14.0.5",
+    "@types/nodemon": "^1.19.0",
+    "grpc-tools": "^1.9.0",
+    "grpc_tools_node_protoc_ts": "^3.0.0",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.3"
+  }
+}

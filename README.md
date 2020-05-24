@@ -25,7 +25,7 @@ gRPC example of crud with typescript and nodejs
         
 
 
-##### 2.2. Testing the gRPC API using BloomRPC
+##### 2.2. Testing the gRPC Microservices using BloomRPC
 
 * To install BloomRPC access the [guide](https://github.com/uw-labs/bloomrpc)
 
