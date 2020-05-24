@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import * as grpc from 'grpc';
 import {protoIndex} from './proto';
-import customersHandler from './services/customers';
+import customersHandler from './controllers/customers';
 
 protoIndex();
 
@@ -12,7 +12,7 @@ type StartServerType = () => void;
 export const startServer: StartServerType = (): void => {
     const server: grpc.Server = new grpc.Server();
 
-    /*TODO: Register services*/
+    /*TODO: Register controllers*/
     server.addService(customersHandler.service, customersHandler.handler);
 
     server.bindAsync(
