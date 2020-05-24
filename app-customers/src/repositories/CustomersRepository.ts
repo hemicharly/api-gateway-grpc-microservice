@@ -12,7 +12,7 @@ export default class CustomersRepository {
     public static async findAll(): Promise<CustomersResponseList> {
         const customersResponseList: CustomersResponseList = new CustomersResponseList();
 
-        for (let i: number = 0; i <= 10000; i++) {
+        for (let i: number = 0; i <= 100; i++) {
             const customersResponse = new CustomersResponse();
             customersResponse.setId(uuidv4());
             customersResponse.setName(uuidv4());
