@@ -46,7 +46,7 @@ export default class CustomersRepository {
 
     public static async update(request: CustomersUpdateRequest): Promise<CustomersResponse> {
         const customersResponse = new CustomersResponse();
-        customersResponse.setId(uuidv4());
+        customersResponse.setId(request.getId());
         customersResponse.setName(request.getName());
         customersResponse.setAge(request.getAge());
         customersResponse.setAddress(request.getAddress());
