@@ -40,5 +40,7 @@ gRPC example of crud with typescript and nodejs
 ##### 2.3. Testing the gRPC Microservices using BloomRPC
 
 * To install BloomRPC access the [guide](https://github.com/uw-labs/bloomrpc)
+* Access Microservice Customers gRPC in: `127.0.0.1:50051`
+* Access Microservice Users gRPC in: `127.0.0.1:50052`
 
 <img src="editor-preview.gif" />
