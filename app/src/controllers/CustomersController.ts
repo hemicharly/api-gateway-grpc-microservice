@@ -34,7 +34,7 @@ class CustomersServer implements ICustomersServer {
 
     insert = async (call: grpc.ServerUnaryCall<CustomersInsertRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
-            const response = await CustomersRepository.insert(call.request);
+            const response: CustomersResponse = await CustomersRepository.insert(call.request);
             callback(null, response);
         } catch (e) {
             callback(e, null);
@@ -43,7 +43,7 @@ class CustomersServer implements ICustomersServer {
 
     update = async (call: grpc.ServerUnaryCall<CustomersUpdateRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
-            const response = await CustomersRepository.update(call.request);
+            const response: CustomersResponse = await CustomersRepository.update(call.request);
             callback(null, response);
         } catch (e) {
             callback(e, null);
@@ -52,7 +52,7 @@ class CustomersServer implements ICustomersServer {
 
     remove = async (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<Empty>): Promise<void> => {
         try {
-            const response = await CustomersRepository.removeById(call.request.getId());
+            const response: Empty = await CustomersRepository.removeById(call.request.getId());
             callback(null, response);
         } catch (e) {
             callback(e, null);
