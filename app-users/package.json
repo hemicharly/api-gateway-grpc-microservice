@@ -1,5 +1,5 @@
 {
-  "name": "grpc-api-typescript",
+  "name": "grpc-users",
   "version": "1.0.0",
   "description": "gRPC typescript start with nodejs example",
   "main": "index.js",

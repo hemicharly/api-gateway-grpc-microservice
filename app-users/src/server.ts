@@ -1,12 +1,11 @@
 import 'dotenv/config';
 import * as grpc from 'grpc';
 import {protoIndex} from './proto';
-import CustomersController from './controllers/CustomersController';
 import UsersController from './controllers/UsersController';
 
 protoIndex();
 
-const port: string | number = process.env.PORT || 50051;
+const port: string | number = process.env.PORT || 50052;
 
 type StartServerType = () => void;
 
@@ -14,7 +13,6 @@ export const startServer: StartServerType = (): void => {
     const server: grpc.Server = new grpc.Server();
 
     /*TODO: Register controllers*/
-    server.addService(CustomersController.service, CustomersController.server);
     server.addService(UsersController.service, UsersController.server);
 
     server.bindAsync(
@@ -24,7 +22,7 @@ export const startServer: StartServerType = (): void => {
             if (err != null) {
                 return console.error(`Error start application: ${err}`);
             }
-            console.warn(`Application gRPC listening on ${port}`);
+            console.warn(`Microservice users gRPC listening on ${port}`);
         },
     );
 

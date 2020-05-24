@@ -1,13 +1,25 @@
 version: '3.7'
 
 services:
-  api-grpc-server:
-    container_name: api-grpc-server
+  grpc-customers:
+    container_name: grpc-customers
     build:
       context: .
       dockerfile: docker/nodejs/Dockerfile
     ports:
       - 50051:50051
     volumes:
-      - ./app:/opt/app
+      - ./app-customers:/opt/app
+    entrypoint: ["entrypoint-server.sh"]
+
+
+  grpc-users:
+    container_name: grpc-users
+    build:
+      context: .
+      dockerfile: docker/nodejs/Dockerfile
+    ports:
+      - 50052:50052
+    volumes:
+      - ./app-users:/opt/app
     entrypoint: ["entrypoint-server.sh"]
