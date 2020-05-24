@@ -1,4 +1,4 @@
-# grpc-api-typescript
+# gRPC Microservice with Typescript
 gRPC example of crud with typescript and nodejs
 
 
@@ -6,7 +6,6 @@ gRPC example of crud with typescript and nodejs
 
 * Install docker
 * Install docker-compose
-* Install make
 
 #### 2.  Steps to run this project:
 
