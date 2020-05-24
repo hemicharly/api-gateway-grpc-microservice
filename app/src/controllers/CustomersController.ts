@@ -13,11 +13,7 @@ import CustomersRepository from '../repositories/CustomersRepository';
 
 
 class CustomersServer implements ICustomersServer {
-    /**
-     * Customers list
-     * @param call
-     * @param callback
-     */
+
     getAll = async (call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<CustomersResponseList>): Promise<void> => {
         try {
             const response: CustomersResponseList = await CustomersRepository.findAll();
@@ -27,11 +23,6 @@ class CustomersServer implements ICustomersServer {
         }
     };
 
-    /**
-     * Customers by id
-     * @param call
-     * @param callback
-     */
     get = async (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
             const response: CustomersResponse = await CustomersRepository.findById(call.request.getId());
@@ -41,11 +32,6 @@ class CustomersServer implements ICustomersServer {
         }
     };
 
-    /**
-     * Customers insert
-     * @param call
-     * @param callback
-     */
     insert = async (call: grpc.ServerUnaryCall<CustomersInsertRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
             const response = await CustomersRepository.insert(call.request);
@@ -55,11 +41,6 @@ class CustomersServer implements ICustomersServer {
         }
     };
 
-    /**
-     * Customers update
-     * @param call
-     * @param callback
-     */
     update = async (call: grpc.ServerUnaryCall<CustomersUpdateRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
             const response = await CustomersRepository.update(call.request);
@@ -69,11 +50,6 @@ class CustomersServer implements ICustomersServer {
         }
     };
 
-    /**
-     * Customers by remove
-     * @param call
-     * @param callback
-     */
     remove = async (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<Empty>): Promise<void> => {
         try {
             const response = await CustomersRepository.removeById(call.request.getId());
