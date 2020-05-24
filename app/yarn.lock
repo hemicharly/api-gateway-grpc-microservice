@@ -49,6 +49,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/uuid@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-8.0.0.tgz#165aae4819ad2174a17476dbe66feebd549556c0"
+  integrity sha512-xSQfNcvOiE5f9dyd4Kzxbof1aTrLobL278pGLKOZI6esGfZ7ts9Ka16CzIN6Y8hFHE1C7jIBZokULhK1bOgjRw==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -870,6 +875,11 @@ extglob@^2.0.4:
     regex-not "^1.0.0"
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
+
+fakerator@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/fakerator/-/fakerator-0.3.1.tgz#1f71c4cce994c7037a57f00722c02c6ecb785ce2"
+  integrity sha512-NwjRmqWqx5hgWHEDSmftvmtRRCANdfkwTfdHLj/OJ+9/lGBozSSZcTsPwv7Vl5VFnqT7oRMFJi1MzrPuYBq6mQ==
 
 "falsey@^0.3.2":
   version "0.3.2"
@@ -2646,6 +2656,11 @@ util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
+
+uuid@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.1.0.tgz#6f1536eb43249f473abc6bd58ff983da1ca30d8d"
+  integrity sha512-CI18flHDznR0lq54xBycOVmphdCYnQLKn8abKn7PXUiKUGdEd+/l9LWNJmugXel4hXq7S+RMNl34ecyC9TntWg==
 
 warning-symbol@^0.1.0:
   version "0.1.0"
