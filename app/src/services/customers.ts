@@ -9,13 +9,14 @@ import {
     Empty
 } from "../proto/customers/customers_pb";
 
+
 class CustomersHandler implements ICustomerServiceServer {
     /**
      * Customers list
      * @param call
      * @param callback
      */
-    getAll = (call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<CustomersResponseList>): void => {
+    getAll = async (call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<CustomersResponseList>): Promise<void> => {
         const customersResponse = new CustomersResponse();
         customersResponse.setId('123456');
         customersResponse.setName('Hemicharly Thiago');
@@ -33,7 +34,7 @@ class CustomersHandler implements ICustomerServiceServer {
      * @param call
      * @param callback
      */
-    get = (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<CustomersResponse>): void => {
+    get = async (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         const customersResponse = new CustomersResponse();
         customersResponse.setId(call.request.getId());
         customersResponse.setName('Hemicharly Thiago');
@@ -48,7 +49,7 @@ class CustomersHandler implements ICustomerServiceServer {
      * @param call
      * @param callback
      */
-    insert = (call: grpc.ServerUnaryCall<CustomersRequest>, callback: grpc.sendUnaryData<CustomersResponse>): void => {
+    insert = async (call: grpc.ServerUnaryCall<CustomersRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         const customersResponse = new CustomersResponse();
         customersResponse.setId('123');
         customersResponse.setName(call.request.getName());
@@ -63,7 +64,7 @@ class CustomersHandler implements ICustomerServiceServer {
      * @param call
      * @param callback
      */
-    update = (call: grpc.ServerUnaryCall<CustomersRequest>, callback: grpc.sendUnaryData<CustomersResponse>): void => {
+    update = async (call: grpc.ServerUnaryCall<CustomersRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         const customersResponse = new CustomersResponse();
         customersResponse.setId('123');
         customersResponse.setName(call.request.getName());
@@ -78,7 +79,7 @@ class CustomersHandler implements ICustomerServiceServer {
      * @param call
      * @param callback
      */
-    remove = (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<Empty>): void => {
+    remove = async (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<Empty>): Promise<void> => {
         callback(null, new Empty());
     };
 }
