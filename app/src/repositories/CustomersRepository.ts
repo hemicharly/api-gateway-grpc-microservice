@@ -1,8 +1,14 @@
-import {CustomersRequest, CustomersResponse, CustomersResponseList, Empty} from '../proto/customers/customers_pb';
+import {
+    CustomersInsertRequest,
+    CustomersUpdateRequest,
+    CustomersResponse,
+    CustomersResponseList,
+    Empty
+} from '../proto/customers/customers_pb';
 import {v4 as uuidv4} from 'uuid';
 
 
-export default class CustomersServices {
+export default class CustomersRepository {
     public static async findAll(): Promise<CustomersResponseList> {
         const customersResponseList: CustomersResponseList = new CustomersResponseList();
 
@@ -28,7 +34,7 @@ export default class CustomersServices {
         return Promise.resolve(customersResponse);
     }
 
-    public static async insert(request: CustomersRequest): Promise<CustomersResponse> {
+    public static async insert(request: CustomersInsertRequest): Promise<CustomersResponse> {
         const customersResponse = new CustomersResponse();
         customersResponse.setId(uuidv4());
         customersResponse.setName(request.getName());
@@ -38,7 +44,7 @@ export default class CustomersServices {
         return Promise.resolve(customersResponse);
     }
 
-    public static async update(request: CustomersRequest): Promise<CustomersResponse> {
+    public static async update(request: CustomersUpdateRequest): Promise<CustomersResponse> {
         const customersResponse = new CustomersResponse();
         customersResponse.setId(uuidv4());
         customersResponse.setName(request.getName());
