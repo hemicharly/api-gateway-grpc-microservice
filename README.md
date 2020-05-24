@@ -1,5 +1,5 @@
-## gRPC Microservice with Typescript
-gRPC example of crud with typescript and nodejs
+## Gateway and gRPC microservice with Typescript
+Gateway and gRPC microservice example of crud with typescript and nodejs
 
 
 #### 1. Requirements Installation
