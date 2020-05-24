@@ -7,16 +7,16 @@
 import * as grpc from "grpc";
 import * as customers_pb from "./customers_pb";
 
-interface ICustomersControllerService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    getAll: ICustomersControllerService_IGetAll;
-    get: ICustomersControllerService_IGet;
-    insert: ICustomersControllerService_IInsert;
-    update: ICustomersControllerService_IUpdate;
-    remove: ICustomersControllerService_IRemove;
+interface ICustomersService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
+    getAll: ICustomersService_IGetAll;
+    get: ICustomersService_IGet;
+    insert: ICustomersService_IInsert;
+    update: ICustomersService_IUpdate;
+    remove: ICustomersService_IRemove;
 }
 
-interface ICustomersControllerService_IGetAll extends grpc.MethodDefinition<customers_pb.Empty, customers_pb.CustomersResponseList> {
-    path: string; // "/.CustomersController/GetAll"
+interface ICustomersService_IGetAll extends grpc.MethodDefinition<customers_pb.Empty, customers_pb.CustomersResponseList> {
+    path: string; // "/.Customers/GetAll"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.Empty>;
@@ -24,8 +24,8 @@ interface ICustomersControllerService_IGetAll extends grpc.MethodDefinition<cust
     responseSerialize: grpc.serialize<customers_pb.CustomersResponseList>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponseList>;
 }
-interface ICustomersControllerService_IGet extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.CustomersResponse> {
-    path: string; // "/.CustomersController/Get"
+interface ICustomersService_IGet extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.CustomersResponse> {
+    path: string; // "/.Customers/Get"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.CustomersRequestId>;
@@ -33,8 +33,8 @@ interface ICustomersControllerService_IGet extends grpc.MethodDefinition<custome
     responseSerialize: grpc.serialize<customers_pb.CustomersResponse>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponse>;
 }
-interface ICustomersControllerService_IInsert extends grpc.MethodDefinition<customers_pb.CustomersInsertRequest, customers_pb.CustomersResponse> {
-    path: string; // "/.CustomersController/Insert"
+interface ICustomersService_IInsert extends grpc.MethodDefinition<customers_pb.CustomersInsertRequest, customers_pb.CustomersResponse> {
+    path: string; // "/.Customers/Insert"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.CustomersInsertRequest>;
@@ -42,8 +42,8 @@ interface ICustomersControllerService_IInsert extends grpc.MethodDefinition<cust
     responseSerialize: grpc.serialize<customers_pb.CustomersResponse>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponse>;
 }
-interface ICustomersControllerService_IUpdate extends grpc.MethodDefinition<customers_pb.CustomersUpdateRequest, customers_pb.CustomersResponse> {
-    path: string; // "/.CustomersController/Update"
+interface ICustomersService_IUpdate extends grpc.MethodDefinition<customers_pb.CustomersUpdateRequest, customers_pb.CustomersResponse> {
+    path: string; // "/.Customers/Update"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.CustomersUpdateRequest>;
@@ -51,8 +51,8 @@ interface ICustomersControllerService_IUpdate extends grpc.MethodDefinition<cust
     responseSerialize: grpc.serialize<customers_pb.CustomersResponse>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponse>;
 }
-interface ICustomersControllerService_IRemove extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.Empty> {
-    path: string; // "/.CustomersController/Remove"
+interface ICustomersService_IRemove extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.Empty> {
+    path: string; // "/.Customers/Remove"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.CustomersRequestId>;
@@ -61,9 +61,9 @@ interface ICustomersControllerService_IRemove extends grpc.MethodDefinition<cust
     responseDeserialize: grpc.deserialize<customers_pb.Empty>;
 }
 
-export const CustomersControllerService: ICustomersControllerService;
+export const CustomersService: ICustomersService;
 
-export interface ICustomersControllerServer {
+export interface ICustomersServer {
     getAll: grpc.handleUnaryCall<customers_pb.Empty, customers_pb.CustomersResponseList>;
     get: grpc.handleUnaryCall<customers_pb.CustomersRequestId, customers_pb.CustomersResponse>;
     insert: grpc.handleUnaryCall<customers_pb.CustomersInsertRequest, customers_pb.CustomersResponse>;
@@ -71,7 +71,7 @@ export interface ICustomersControllerServer {
     remove: grpc.handleUnaryCall<customers_pb.CustomersRequestId, customers_pb.Empty>;
 }
 
-export interface ICustomersControllerClient {
+export interface ICustomersClient {
     getAll(request: customers_pb.Empty, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
     getAll(request: customers_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
     getAll(request: customers_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
@@ -89,7 +89,7 @@ export interface ICustomersControllerClient {
     remove(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.Empty) => void): grpc.ClientUnaryCall;
 }
 
-export class CustomersControllerClient extends grpc.Client implements ICustomersControllerClient {
+export class CustomersClient extends grpc.Client implements ICustomersClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
     public getAll(request: customers_pb.Empty, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
     public getAll(request: customers_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;

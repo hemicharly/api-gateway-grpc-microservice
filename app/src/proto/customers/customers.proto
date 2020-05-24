@@ -1,6 +1,6 @@
 syntax = 'proto3';
 
-service CustomersController {
+service Customers {
   rpc GetAll (Empty) returns (CustomersResponseList) {}
   rpc Get (CustomersRequestId) returns (CustomersResponse) {}
   rpc Insert (CustomersInsertRequest) returns (CustomersResponse) {}

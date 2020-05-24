@@ -71,9 +71,9 @@ function deserialize_Empty(buffer_arg) {
 }
 
 
-var CustomersControllerService = exports.CustomersControllerService = {
+var CustomersService = exports.CustomersService = {
   getAll: {
-    path: '/CustomersController/GetAll',
+    path: '/Customers/GetAll',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.Empty,
@@ -84,7 +84,7 @@ var CustomersControllerService = exports.CustomersControllerService = {
     responseDeserialize: deserialize_CustomersResponseList,
   },
   get: {
-    path: '/CustomersController/Get',
+    path: '/Customers/Get',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.CustomersRequestId,
@@ -95,7 +95,7 @@ var CustomersControllerService = exports.CustomersControllerService = {
     responseDeserialize: deserialize_CustomersResponse,
   },
   insert: {
-    path: '/CustomersController/Insert',
+    path: '/Customers/Insert',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.CustomersInsertRequest,
@@ -106,7 +106,7 @@ var CustomersControllerService = exports.CustomersControllerService = {
     responseDeserialize: deserialize_CustomersResponse,
   },
   update: {
-    path: '/CustomersController/Update',
+    path: '/Customers/Update',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.CustomersUpdateRequest,
@@ -117,7 +117,7 @@ var CustomersControllerService = exports.CustomersControllerService = {
     responseDeserialize: deserialize_CustomersResponse,
   },
   remove: {
-    path: '/CustomersController/Remove',
+    path: '/Customers/Remove',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.CustomersRequestId,
@@ -129,4 +129,4 @@ var CustomersControllerService = exports.CustomersControllerService = {
   },
 };
 
-exports.CustomersControllerClient = grpc.makeGenericClientConstructor(CustomersControllerService);
+exports.CustomersClient = grpc.makeGenericClientConstructor(CustomersService);
