@@ -21,7 +21,7 @@ gRPC example of crud with typescript and nodejs
         
     * note: if start project in mode `production` change the script `docker/nodejs/entrypoint-server.sh`:
         
-        from `yarn dev` to `yarn start`
+        from `yarn dev` to ` yarn build && yarn start`
         
 
 
