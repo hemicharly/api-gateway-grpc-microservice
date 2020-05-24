@@ -1,17 +1,18 @@
 import * as grpc from 'grpc';
 
-import {CustomerServiceService, ICustomerServiceServer} from '../proto/customers/customers_grpc_pb';
+import {CustomersService, ICustomersServer} from '../proto/customers/customers_grpc_pb';
 import {
-    CustomersRequest,
+    CustomersInsertRequest,
+    CustomersUpdateRequest,
     CustomersRequestId,
     CustomersResponse,
     CustomersResponseList,
     Empty
 } from '../proto/customers/customers_pb';
-import CustomersServices from '../services/customersServices';
+import CustomersRepository from '../repositories/CustomersRepository';
 
 
-class CustomersHandler implements ICustomerServiceServer {
+class CustomersServer implements ICustomersServer {
     /**
      * Customers list
      * @param call
@@ -19,7 +20,7 @@ class CustomersHandler implements ICustomerServiceServer {
      */
     getAll = async (call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<CustomersResponseList>): Promise<void> => {
         try {
-            const response: CustomersResponseList = await CustomersServices.findAll();
+            const response: CustomersResponseList = await CustomersRepository.findAll();
             callback(null, response);
         } catch (e) {
             callback(e, null);
@@ -33,7 +34,7 @@ class CustomersHandler implements ICustomerServiceServer {
      */
     get = async (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
-            const response: CustomersResponse = await CustomersServices.findById(call.request.getId());
+            const response: CustomersResponse = await CustomersRepository.findById(call.request.getId());
             callback(null, response);
         } catch (e) {
             callback(e, null);
@@ -45,9 +46,9 @@ class CustomersHandler implements ICustomerServiceServer {
      * @param call
      * @param callback
      */
-    insert = async (call: grpc.ServerUnaryCall<CustomersRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
+    insert = async (call: grpc.ServerUnaryCall<CustomersInsertRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
-            const response = await CustomersServices.insert(call.request);
+            const response = await CustomersRepository.insert(call.request);
             callback(null, response);
         } catch (e) {
             callback(e, null);
@@ -59,9 +60,9 @@ class CustomersHandler implements ICustomerServiceServer {
      * @param call
      * @param callback
      */
-    update = async (call: grpc.ServerUnaryCall<CustomersRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
+    update = async (call: grpc.ServerUnaryCall<CustomersUpdateRequest>, callback: grpc.sendUnaryData<CustomersResponse>): Promise<void> => {
         try {
-            const response = await CustomersServices.update(call.request);
+            const response = await CustomersRepository.update(call.request);
             callback(null, response);
         } catch (e) {
             callback(e, null);
@@ -75,7 +76,7 @@ class CustomersHandler implements ICustomerServiceServer {
      */
     remove = async (call: grpc.ServerUnaryCall<CustomersRequestId>, callback: grpc.sendUnaryData<Empty>): Promise<void> => {
         try {
-            const response = await CustomersServices.removeById(call.request.getId());
+            const response = await CustomersRepository.removeById(call.request.getId());
             callback(null, response);
         } catch (e) {
             callback(e, null);
@@ -84,6 +85,6 @@ class CustomersHandler implements ICustomerServiceServer {
 }
 
 export default {
-    service: CustomerServiceService,
-    handler: new CustomersHandler(),
+    service: CustomersService,
+    server: new CustomersServer()
 };
