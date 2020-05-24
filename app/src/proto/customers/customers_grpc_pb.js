@@ -4,15 +4,15 @@
 var grpc = require('grpc');
 var customers_pb = require('./customers_pb.js');
 
-function serialize_CustomersRequest(arg) {
-  if (!(arg instanceof customers_pb.CustomersRequest)) {
-    throw new Error('Expected argument of type CustomersRequest');
+function serialize_CustomersInsertRequest(arg) {
+  if (!(arg instanceof customers_pb.CustomersInsertRequest)) {
+    throw new Error('Expected argument of type CustomersInsertRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_CustomersRequest(buffer_arg) {
-  return customers_pb.CustomersRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_CustomersInsertRequest(buffer_arg) {
+  return customers_pb.CustomersInsertRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_CustomersRequestId(arg) {
@@ -48,6 +48,17 @@ function deserialize_CustomersResponseList(buffer_arg) {
   return customers_pb.CustomersResponseList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_CustomersUpdateRequest(arg) {
+  if (!(arg instanceof customers_pb.CustomersUpdateRequest)) {
+    throw new Error('Expected argument of type CustomersUpdateRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_CustomersUpdateRequest(buffer_arg) {
+  return customers_pb.CustomersUpdateRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_Empty(arg) {
   if (!(arg instanceof customers_pb.Empty)) {
     throw new Error('Expected argument of type Empty');
@@ -60,9 +71,9 @@ function deserialize_Empty(buffer_arg) {
 }
 
 
-var CustomerServiceService = exports.CustomerServiceService = {
+var CustomersControllerService = exports.CustomersControllerService = {
   getAll: {
-    path: '/CustomerService/GetAll',
+    path: '/CustomersController/GetAll',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.Empty,
@@ -73,7 +84,7 @@ var CustomerServiceService = exports.CustomerServiceService = {
     responseDeserialize: deserialize_CustomersResponseList,
   },
   get: {
-    path: '/CustomerService/Get',
+    path: '/CustomersController/Get',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.CustomersRequestId,
@@ -84,29 +95,29 @@ var CustomerServiceService = exports.CustomerServiceService = {
     responseDeserialize: deserialize_CustomersResponse,
   },
   insert: {
-    path: '/CustomerService/Insert',
+    path: '/CustomersController/Insert',
     requestStream: false,
     responseStream: false,
-    requestType: customers_pb.CustomersRequest,
+    requestType: customers_pb.CustomersInsertRequest,
     responseType: customers_pb.CustomersResponse,
-    requestSerialize: serialize_CustomersRequest,
-    requestDeserialize: deserialize_CustomersRequest,
+    requestSerialize: serialize_CustomersInsertRequest,
+    requestDeserialize: deserialize_CustomersInsertRequest,
     responseSerialize: serialize_CustomersResponse,
     responseDeserialize: deserialize_CustomersResponse,
   },
   update: {
-    path: '/CustomerService/Update',
+    path: '/CustomersController/Update',
     requestStream: false,
     responseStream: false,
-    requestType: customers_pb.CustomersRequest,
+    requestType: customers_pb.CustomersUpdateRequest,
     responseType: customers_pb.CustomersResponse,
-    requestSerialize: serialize_CustomersRequest,
-    requestDeserialize: deserialize_CustomersRequest,
+    requestSerialize: serialize_CustomersUpdateRequest,
+    requestDeserialize: deserialize_CustomersUpdateRequest,
     responseSerialize: serialize_CustomersResponse,
     responseDeserialize: deserialize_CustomersResponse,
   },
   remove: {
-    path: '/CustomerService/Remove',
+    path: '/CustomersController/Remove',
     requestStream: false,
     responseStream: false,
     requestType: customers_pb.CustomersRequestId,
@@ -118,4 +129,4 @@ var CustomerServiceService = exports.CustomerServiceService = {
   },
 };
 
-exports.CustomerServiceClient = grpc.makeGenericClientConstructor(CustomerServiceService);
+exports.CustomersControllerClient = grpc.makeGenericClientConstructor(CustomersControllerService);

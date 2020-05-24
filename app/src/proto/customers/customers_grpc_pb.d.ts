@@ -7,16 +7,16 @@
 import * as grpc from "grpc";
 import * as customers_pb from "./customers_pb";
 
-interface ICustomerServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    getAll: ICustomerServiceService_IGetAll;
-    get: ICustomerServiceService_IGet;
-    insert: ICustomerServiceService_IInsert;
-    update: ICustomerServiceService_IUpdate;
-    remove: ICustomerServiceService_IRemove;
+interface ICustomersControllerService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
+    getAll: ICustomersControllerService_IGetAll;
+    get: ICustomersControllerService_IGet;
+    insert: ICustomersControllerService_IInsert;
+    update: ICustomersControllerService_IUpdate;
+    remove: ICustomersControllerService_IRemove;
 }
 
-interface ICustomerServiceService_IGetAll extends grpc.MethodDefinition<customers_pb.Empty, customers_pb.CustomersResponseList> {
-    path: string; // "/.CustomerService/GetAll"
+interface ICustomersControllerService_IGetAll extends grpc.MethodDefinition<customers_pb.Empty, customers_pb.CustomersResponseList> {
+    path: string; // "/.CustomersController/GetAll"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.Empty>;
@@ -24,8 +24,8 @@ interface ICustomerServiceService_IGetAll extends grpc.MethodDefinition<customer
     responseSerialize: grpc.serialize<customers_pb.CustomersResponseList>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponseList>;
 }
-interface ICustomerServiceService_IGet extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.CustomersResponse> {
-    path: string; // "/.CustomerService/Get"
+interface ICustomersControllerService_IGet extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.CustomersResponse> {
+    path: string; // "/.CustomersController/Get"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.CustomersRequestId>;
@@ -33,26 +33,26 @@ interface ICustomerServiceService_IGet extends grpc.MethodDefinition<customers_p
     responseSerialize: grpc.serialize<customers_pb.CustomersResponse>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponse>;
 }
-interface ICustomerServiceService_IInsert extends grpc.MethodDefinition<customers_pb.CustomersRequest, customers_pb.CustomersResponse> {
-    path: string; // "/.CustomerService/Insert"
+interface ICustomersControllerService_IInsert extends grpc.MethodDefinition<customers_pb.CustomersInsertRequest, customers_pb.CustomersResponse> {
+    path: string; // "/.CustomersController/Insert"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<customers_pb.CustomersRequest>;
-    requestDeserialize: grpc.deserialize<customers_pb.CustomersRequest>;
+    requestSerialize: grpc.serialize<customers_pb.CustomersInsertRequest>;
+    requestDeserialize: grpc.deserialize<customers_pb.CustomersInsertRequest>;
     responseSerialize: grpc.serialize<customers_pb.CustomersResponse>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponse>;
 }
-interface ICustomerServiceService_IUpdate extends grpc.MethodDefinition<customers_pb.CustomersRequest, customers_pb.CustomersResponse> {
-    path: string; // "/.CustomerService/Update"
+interface ICustomersControllerService_IUpdate extends grpc.MethodDefinition<customers_pb.CustomersUpdateRequest, customers_pb.CustomersResponse> {
+    path: string; // "/.CustomersController/Update"
     requestStream: boolean; // false
     responseStream: boolean; // false
-    requestSerialize: grpc.serialize<customers_pb.CustomersRequest>;
-    requestDeserialize: grpc.deserialize<customers_pb.CustomersRequest>;
+    requestSerialize: grpc.serialize<customers_pb.CustomersUpdateRequest>;
+    requestDeserialize: grpc.deserialize<customers_pb.CustomersUpdateRequest>;
     responseSerialize: grpc.serialize<customers_pb.CustomersResponse>;
     responseDeserialize: grpc.deserialize<customers_pb.CustomersResponse>;
 }
-interface ICustomerServiceService_IRemove extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.Empty> {
-    path: string; // "/.CustomerService/Remove"
+interface ICustomersControllerService_IRemove extends grpc.MethodDefinition<customers_pb.CustomersRequestId, customers_pb.Empty> {
+    path: string; // "/.CustomersController/Remove"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<customers_pb.CustomersRequestId>;
@@ -61,35 +61,35 @@ interface ICustomerServiceService_IRemove extends grpc.MethodDefinition<customer
     responseDeserialize: grpc.deserialize<customers_pb.Empty>;
 }
 
-export const CustomerServiceService: ICustomerServiceService;
+export const CustomersControllerService: ICustomersControllerService;
 
-export interface ICustomerServiceServer {
+export interface ICustomersControllerServer {
     getAll: grpc.handleUnaryCall<customers_pb.Empty, customers_pb.CustomersResponseList>;
     get: grpc.handleUnaryCall<customers_pb.CustomersRequestId, customers_pb.CustomersResponse>;
-    insert: grpc.handleUnaryCall<customers_pb.CustomersRequest, customers_pb.CustomersResponse>;
-    update: grpc.handleUnaryCall<customers_pb.CustomersRequest, customers_pb.CustomersResponse>;
+    insert: grpc.handleUnaryCall<customers_pb.CustomersInsertRequest, customers_pb.CustomersResponse>;
+    update: grpc.handleUnaryCall<customers_pb.CustomersUpdateRequest, customers_pb.CustomersResponse>;
     remove: grpc.handleUnaryCall<customers_pb.CustomersRequestId, customers_pb.Empty>;
 }
 
-export interface ICustomerServiceClient {
+export interface ICustomersControllerClient {
     getAll(request: customers_pb.Empty, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
     getAll(request: customers_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
     getAll(request: customers_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
     get(request: customers_pb.CustomersRequestId, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
     get(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
     get(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    insert(request: customers_pb.CustomersRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    insert(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    insert(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    update(request: customers_pb.CustomersRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    update(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    update(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    insert(request: customers_pb.CustomersInsertRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    insert(request: customers_pb.CustomersInsertRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    insert(request: customers_pb.CustomersInsertRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    update(request: customers_pb.CustomersUpdateRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    update(request: customers_pb.CustomersUpdateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    update(request: customers_pb.CustomersUpdateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
     remove(request: customers_pb.CustomersRequestId, callback: (error: grpc.ServiceError | null, response: customers_pb.Empty) => void): grpc.ClientUnaryCall;
     remove(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.Empty) => void): grpc.ClientUnaryCall;
     remove(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.Empty) => void): grpc.ClientUnaryCall;
 }
 
-export class CustomerServiceClient extends grpc.Client implements ICustomerServiceClient {
+export class CustomersControllerClient extends grpc.Client implements ICustomersControllerClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
     public getAll(request: customers_pb.Empty, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
     public getAll(request: customers_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponseList) => void): grpc.ClientUnaryCall;
@@ -97,12 +97,12 @@ export class CustomerServiceClient extends grpc.Client implements ICustomerServi
     public get(request: customers_pb.CustomersRequestId, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
     public get(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
     public get(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    public insert(request: customers_pb.CustomersRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    public insert(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    public insert(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    public update(request: customers_pb.CustomersRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    public update(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
-    public update(request: customers_pb.CustomersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    public insert(request: customers_pb.CustomersInsertRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    public insert(request: customers_pb.CustomersInsertRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    public insert(request: customers_pb.CustomersInsertRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    public update(request: customers_pb.CustomersUpdateRequest, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    public update(request: customers_pb.CustomersUpdateRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
+    public update(request: customers_pb.CustomersUpdateRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.CustomersResponse) => void): grpc.ClientUnaryCall;
     public remove(request: customers_pb.CustomersRequestId, callback: (error: grpc.ServiceError | null, response: customers_pb.Empty) => void): grpc.ClientUnaryCall;
     public remove(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: customers_pb.Empty) => void): grpc.ClientUnaryCall;
     public remove(request: customers_pb.CustomersRequestId, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: customers_pb.Empty) => void): grpc.ClientUnaryCall;

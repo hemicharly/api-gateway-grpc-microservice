@@ -23,7 +23,7 @@ export namespace Empty {
     }
 }
 
-export class CustomersRequest extends jspb.Message { 
+export class CustomersInsertRequest extends jspb.Message { 
     getName(): string;
     setName(value: string): void;
 
@@ -35,17 +35,50 @@ export class CustomersRequest extends jspb.Message {
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): CustomersRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: CustomersRequest): CustomersRequest.AsObject;
+    toObject(includeInstance?: boolean): CustomersInsertRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CustomersInsertRequest): CustomersInsertRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: CustomersRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): CustomersRequest;
-    static deserializeBinaryFromReader(message: CustomersRequest, reader: jspb.BinaryReader): CustomersRequest;
+    static serializeBinaryToWriter(message: CustomersInsertRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CustomersInsertRequest;
+    static deserializeBinaryFromReader(message: CustomersInsertRequest, reader: jspb.BinaryReader): CustomersInsertRequest;
 }
 
-export namespace CustomersRequest {
+export namespace CustomersInsertRequest {
     export type AsObject = {
+        name: string,
+        age: number,
+        address: string,
+    }
+}
+
+export class CustomersUpdateRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): void;
+
+    getName(): string;
+    setName(value: string): void;
+
+    getAge(): number;
+    setAge(value: number): void;
+
+    getAddress(): string;
+    setAddress(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CustomersUpdateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CustomersUpdateRequest): CustomersUpdateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CustomersUpdateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CustomersUpdateRequest;
+    static deserializeBinaryFromReader(message: CustomersUpdateRequest, reader: jspb.BinaryReader): CustomersUpdateRequest;
+}
+
+export namespace CustomersUpdateRequest {
+    export type AsObject = {
+        id: string,
         name: string,
         age: number,
         address: string,
