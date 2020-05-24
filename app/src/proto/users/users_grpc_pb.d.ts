@@ -7,16 +7,17 @@
 import * as grpc from "grpc";
 import * as users_pb from "./users_pb";
 
-interface IUsersControllerService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    getAll: IUsersControllerService_IGetAll;
-    get: IUsersControllerService_IGet;
-    insert: IUsersControllerService_IInsert;
-    update: IUsersControllerService_IUpdate;
-    remove: IUsersControllerService_IRemove;
+interface IUsersService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
+    getAll: IUsersService_IGetAll;
+    get: IUsersService_IGet;
+    insert: IUsersService_IInsert;
+    update: IUsersService_IUpdate;
+    remove: IUsersService_IRemove;
+    login: IUsersService_ILogin;
 }
 
-interface IUsersControllerService_IGetAll extends grpc.MethodDefinition<users_pb.Empty, users_pb.UsersResponseList> {
-    path: string; // "/.UsersController/GetAll"
+interface IUsersService_IGetAll extends grpc.MethodDefinition<users_pb.Empty, users_pb.UsersResponseList> {
+    path: string; // "/.Users/GetAll"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<users_pb.Empty>;
@@ -24,8 +25,8 @@ interface IUsersControllerService_IGetAll extends grpc.MethodDefinition<users_pb
     responseSerialize: grpc.serialize<users_pb.UsersResponseList>;
     responseDeserialize: grpc.deserialize<users_pb.UsersResponseList>;
 }
-interface IUsersControllerService_IGet extends grpc.MethodDefinition<users_pb.UsersRequestId, users_pb.UsersResponse> {
-    path: string; // "/.UsersController/Get"
+interface IUsersService_IGet extends grpc.MethodDefinition<users_pb.UsersRequestId, users_pb.UsersResponse> {
+    path: string; // "/.Users/Get"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<users_pb.UsersRequestId>;
@@ -33,8 +34,8 @@ interface IUsersControllerService_IGet extends grpc.MethodDefinition<users_pb.Us
     responseSerialize: grpc.serialize<users_pb.UsersResponse>;
     responseDeserialize: grpc.deserialize<users_pb.UsersResponse>;
 }
-interface IUsersControllerService_IInsert extends grpc.MethodDefinition<users_pb.UsersInsertRequest, users_pb.UsersResponse> {
-    path: string; // "/.UsersController/Insert"
+interface IUsersService_IInsert extends grpc.MethodDefinition<users_pb.UsersInsertRequest, users_pb.UsersResponse> {
+    path: string; // "/.Users/Insert"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<users_pb.UsersInsertRequest>;
@@ -42,8 +43,8 @@ interface IUsersControllerService_IInsert extends grpc.MethodDefinition<users_pb
     responseSerialize: grpc.serialize<users_pb.UsersResponse>;
     responseDeserialize: grpc.deserialize<users_pb.UsersResponse>;
 }
-interface IUsersControllerService_IUpdate extends grpc.MethodDefinition<users_pb.UsersUpdateRequest, users_pb.UsersResponse> {
-    path: string; // "/.UsersController/Update"
+interface IUsersService_IUpdate extends grpc.MethodDefinition<users_pb.UsersUpdateRequest, users_pb.UsersResponse> {
+    path: string; // "/.Users/Update"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<users_pb.UsersUpdateRequest>;
@@ -51,8 +52,8 @@ interface IUsersControllerService_IUpdate extends grpc.MethodDefinition<users_pb
     responseSerialize: grpc.serialize<users_pb.UsersResponse>;
     responseDeserialize: grpc.deserialize<users_pb.UsersResponse>;
 }
-interface IUsersControllerService_IRemove extends grpc.MethodDefinition<users_pb.UsersRequestId, users_pb.Empty> {
-    path: string; // "/.UsersController/Remove"
+interface IUsersService_IRemove extends grpc.MethodDefinition<users_pb.UsersRequestId, users_pb.Empty> {
+    path: string; // "/.Users/Remove"
     requestStream: boolean; // false
     responseStream: boolean; // false
     requestSerialize: grpc.serialize<users_pb.UsersRequestId>;
@@ -60,18 +61,28 @@ interface IUsersControllerService_IRemove extends grpc.MethodDefinition<users_pb
     responseSerialize: grpc.serialize<users_pb.Empty>;
     responseDeserialize: grpc.deserialize<users_pb.Empty>;
 }
+interface IUsersService_ILogin extends grpc.MethodDefinition<users_pb.UsersLoginRequest, users_pb.UsersResponse> {
+    path: string; // "/.Users/Login"
+    requestStream: boolean; // false
+    responseStream: boolean; // false
+    requestSerialize: grpc.serialize<users_pb.UsersLoginRequest>;
+    requestDeserialize: grpc.deserialize<users_pb.UsersLoginRequest>;
+    responseSerialize: grpc.serialize<users_pb.UsersResponse>;
+    responseDeserialize: grpc.deserialize<users_pb.UsersResponse>;
+}
 
-export const UsersControllerService: IUsersControllerService;
+export const UsersService: IUsersService;
 
-export interface IUsersControllerServer {
+export interface IUsersServer {
     getAll: grpc.handleUnaryCall<users_pb.Empty, users_pb.UsersResponseList>;
     get: grpc.handleUnaryCall<users_pb.UsersRequestId, users_pb.UsersResponse>;
     insert: grpc.handleUnaryCall<users_pb.UsersInsertRequest, users_pb.UsersResponse>;
     update: grpc.handleUnaryCall<users_pb.UsersUpdateRequest, users_pb.UsersResponse>;
     remove: grpc.handleUnaryCall<users_pb.UsersRequestId, users_pb.Empty>;
+    login: grpc.handleUnaryCall<users_pb.UsersLoginRequest, users_pb.UsersResponse>;
 }
 
-export interface IUsersControllerClient {
+export interface IUsersClient {
     getAll(request: users_pb.Empty, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponseList) => void): grpc.ClientUnaryCall;
     getAll(request: users_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponseList) => void): grpc.ClientUnaryCall;
     getAll(request: users_pb.Empty, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponseList) => void): grpc.ClientUnaryCall;
@@ -87,9 +98,12 @@ export interface IUsersControllerClient {
     remove(request: users_pb.UsersRequestId, callback: (error: grpc.ServiceError | null, response: users_pb.Empty) => void): grpc.ClientUnaryCall;
     remove(request: users_pb.UsersRequestId, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: users_pb.Empty) => void): grpc.ClientUnaryCall;
     remove(request: users_pb.UsersRequestId, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: users_pb.Empty) => void): grpc.ClientUnaryCall;
+    login(request: users_pb.UsersLoginRequest, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponse) => void): grpc.ClientUnaryCall;
+    login(request: users_pb.UsersLoginRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponse) => void): grpc.ClientUnaryCall;
+    login(request: users_pb.UsersLoginRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponse) => void): grpc.ClientUnaryCall;
 }
 
-export class UsersControllerClient extends grpc.Client implements IUsersControllerClient {
+export class UsersClient extends grpc.Client implements IUsersClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
     public getAll(request: users_pb.Empty, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponseList) => void): grpc.ClientUnaryCall;
     public getAll(request: users_pb.Empty, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponseList) => void): grpc.ClientUnaryCall;
@@ -106,4 +120,7 @@ export class UsersControllerClient extends grpc.Client implements IUsersControll
     public remove(request: users_pb.UsersRequestId, callback: (error: grpc.ServiceError | null, response: users_pb.Empty) => void): grpc.ClientUnaryCall;
     public remove(request: users_pb.UsersRequestId, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: users_pb.Empty) => void): grpc.ClientUnaryCall;
     public remove(request: users_pb.UsersRequestId, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: users_pb.Empty) => void): grpc.ClientUnaryCall;
+    public login(request: users_pb.UsersLoginRequest, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponse) => void): grpc.ClientUnaryCall;
+    public login(request: users_pb.UsersLoginRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponse) => void): grpc.ClientUnaryCall;
+    public login(request: users_pb.UsersLoginRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: users_pb.UsersResponse) => void): grpc.ClientUnaryCall;
 }

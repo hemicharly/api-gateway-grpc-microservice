@@ -24,14 +24,14 @@ export namespace Empty {
 }
 
 export class UsersInsertRequest extends jspb.Message { 
-    getName(): string;
-    setName(value: string): void;
+    getUsername(): string;
+    setUsername(value: string): void;
 
-    getAge(): number;
-    setAge(value: number): void;
+    getPassword(): string;
+    setPassword(value: string): void;
 
-    getAddress(): string;
-    setAddress(value: string): void;
+    getEmail(): string;
+    setEmail(value: string): void;
 
 
     serializeBinary(): Uint8Array;
@@ -46,9 +46,34 @@ export class UsersInsertRequest extends jspb.Message {
 
 export namespace UsersInsertRequest {
     export type AsObject = {
-        name: string,
-        age: number,
-        address: string,
+        username: string,
+        password: string,
+        email: string,
+    }
+}
+
+export class UsersLoginRequest extends jspb.Message { 
+    getUsername(): string;
+    setUsername(value: string): void;
+
+    getPassword(): string;
+    setPassword(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UsersLoginRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UsersLoginRequest): UsersLoginRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UsersLoginRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UsersLoginRequest;
+    static deserializeBinaryFromReader(message: UsersLoginRequest, reader: jspb.BinaryReader): UsersLoginRequest;
+}
+
+export namespace UsersLoginRequest {
+    export type AsObject = {
+        username: string,
+        password: string,
     }
 }
 
@@ -56,14 +81,14 @@ export class UsersUpdateRequest extends jspb.Message {
     getId(): string;
     setId(value: string): void;
 
-    getName(): string;
-    setName(value: string): void;
+    getUsername(): string;
+    setUsername(value: string): void;
 
-    getAge(): number;
-    setAge(value: number): void;
+    getPassword(): string;
+    setPassword(value: string): void;
 
-    getAddress(): string;
-    setAddress(value: string): void;
+    getEmail(): string;
+    setEmail(value: string): void;
 
 
     serializeBinary(): Uint8Array;
@@ -79,9 +104,9 @@ export class UsersUpdateRequest extends jspb.Message {
 export namespace UsersUpdateRequest {
     export type AsObject = {
         id: string,
-        name: string,
-        age: number,
-        address: string,
+        username: string,
+        password: string,
+        email: string,
     }
 }
 
@@ -110,14 +135,11 @@ export class UsersResponse extends jspb.Message {
     getId(): string;
     setId(value: string): void;
 
-    getName(): string;
-    setName(value: string): void;
+    getUsername(): string;
+    setUsername(value: string): void;
 
-    getAge(): number;
-    setAge(value: number): void;
-
-    getAddress(): string;
-    setAddress(value: string): void;
+    getEmail(): string;
+    setEmail(value: string): void;
 
 
     serializeBinary(): Uint8Array;
@@ -133,9 +155,8 @@ export class UsersResponse extends jspb.Message {
 export namespace UsersResponse {
     export type AsObject = {
         id: string,
-        name: string,
-        age: number,
-        address: string,
+        username: string,
+        email: string,
     }
 }
 

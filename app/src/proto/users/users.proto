@@ -1,26 +1,32 @@
 syntax = 'proto3';
 
-service UsersController {
+service Users {
   rpc GetAll (Empty) returns (UsersResponseList) {}
   rpc Get (UsersRequestId) returns (UsersResponse) {}
   rpc Insert (UsersInsertRequest) returns (UsersResponse) {}
   rpc Update (UsersUpdateRequest) returns (UsersResponse) {}
   rpc Remove (UsersRequestId) returns (Empty) {}
+  rpc Login (UsersLoginRequest) returns (UsersResponse){}
 }
 
 message Empty {}
 
 message UsersInsertRequest {
-  string name = 1;
-  int32 age = 2;
-  string address = 3;
+  string username = 1;
+  string password = 2;
+  string email = 3;
+}
+
+message UsersLoginRequest {
+  string username = 1;
+  string password = 2;
 }
 
 message UsersUpdateRequest {
   string id = 1;
-  string name = 2;
-  int32 age = 3;
-  string address = 4;
+  string username = 2;
+  string password = 3;
+  string email = 4;
 }
 
 message UsersRequestId {
@@ -29,9 +35,8 @@ message UsersRequestId {
 
 message UsersResponse {
   string id = 1;
-  string name = 2;
-  int32 age = 3;
-  string address = 4;
+  string username = 2;
+  string email = 3;
 }
 
 message UsersResponseList {

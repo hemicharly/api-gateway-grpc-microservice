@@ -26,6 +26,17 @@ function deserialize_UsersInsertRequest(buffer_arg) {
   return users_pb.UsersInsertRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_UsersLoginRequest(arg) {
+  if (!(arg instanceof users_pb.UsersLoginRequest)) {
+    throw new Error('Expected argument of type UsersLoginRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_UsersLoginRequest(buffer_arg) {
+  return users_pb.UsersLoginRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_UsersRequestId(arg) {
   if (!(arg instanceof users_pb.UsersRequestId)) {
     throw new Error('Expected argument of type UsersRequestId');
@@ -71,9 +82,9 @@ function deserialize_UsersUpdateRequest(buffer_arg) {
 }
 
 
-var UsersControllerService = exports.UsersControllerService = {
+var UsersService = exports.UsersService = {
   getAll: {
-    path: '/UsersController/GetAll',
+    path: '/Users/GetAll',
     requestStream: false,
     responseStream: false,
     requestType: users_pb.Empty,
@@ -84,7 +95,7 @@ var UsersControllerService = exports.UsersControllerService = {
     responseDeserialize: deserialize_UsersResponseList,
   },
   get: {
-    path: '/UsersController/Get',
+    path: '/Users/Get',
     requestStream: false,
     responseStream: false,
     requestType: users_pb.UsersRequestId,
@@ -95,7 +106,7 @@ var UsersControllerService = exports.UsersControllerService = {
     responseDeserialize: deserialize_UsersResponse,
   },
   insert: {
-    path: '/UsersController/Insert',
+    path: '/Users/Insert',
     requestStream: false,
     responseStream: false,
     requestType: users_pb.UsersInsertRequest,
@@ -106,7 +117,7 @@ var UsersControllerService = exports.UsersControllerService = {
     responseDeserialize: deserialize_UsersResponse,
   },
   update: {
-    path: '/UsersController/Update',
+    path: '/Users/Update',
     requestStream: false,
     responseStream: false,
     requestType: users_pb.UsersUpdateRequest,
@@ -117,7 +128,7 @@ var UsersControllerService = exports.UsersControllerService = {
     responseDeserialize: deserialize_UsersResponse,
   },
   remove: {
-    path: '/UsersController/Remove',
+    path: '/Users/Remove',
     requestStream: false,
     responseStream: false,
     requestType: users_pb.UsersRequestId,
@@ -127,6 +138,17 @@ var UsersControllerService = exports.UsersControllerService = {
     responseSerialize: serialize_Empty,
     responseDeserialize: deserialize_Empty,
   },
+  login: {
+    path: '/Users/Login',
+    requestStream: false,
+    responseStream: false,
+    requestType: users_pb.UsersLoginRequest,
+    responseType: users_pb.UsersResponse,
+    requestSerialize: serialize_UsersLoginRequest,
+    requestDeserialize: deserialize_UsersLoginRequest,
+    responseSerialize: serialize_UsersResponse,
+    responseDeserialize: deserialize_UsersResponse,
+  },
 };
 
-exports.UsersControllerClient = grpc.makeGenericClientConstructor(UsersControllerService);
+exports.UsersClient = grpc.makeGenericClientConstructor(UsersService);
