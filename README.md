@@ -30,7 +30,7 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
        
 ##### 2.2. Testing the Gateway API gRPC
 
-   * Access gateway gRPC in `http://localhost:3005`
+   * Access gateway api in `http://localhost:3005`
     
         | METHOD | SERVICES |
         | ---  | --- |
