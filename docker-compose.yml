@@ -32,6 +32,9 @@ services:
       dockerfile: docker/nodejs/Dockerfile
     ports:
       - 3005:3005
+    links:
+      - grpc-customers
+      - grpc-users
     depends_on:
       - grpc-customers
       - grpc-users
