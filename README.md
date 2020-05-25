@@ -39,6 +39,12 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
         | POST | /customers |
         | PUT  | /customers |
         | DELETE | /customers/12385 |
+        | GET  | /users |
+        | GET  | /users/47 |
+        | POST | /users |
+        | PUT  | /users |
+        | DELETE | /users/6 |
+        | POST | /users/login |
         
         
 ##### 2.3. Testing the gRPC Microservices using BloomRPC
