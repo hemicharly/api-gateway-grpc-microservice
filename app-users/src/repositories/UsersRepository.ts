@@ -13,7 +13,7 @@ export default class UsersRepository {
     public static async findAll(): Promise<UsersResponseList> {
         const usersResponseList: UsersResponseList = new UsersResponseList();
 
-        for (let i: number = 0; i <= 10000; i++) {
+        for (let i: number = 0; i <= 100; i++) {
             const usersResponse = new UsersResponse();
             usersResponse.setId(uuidv4());
             usersResponse.setUsername(uuidv4());
