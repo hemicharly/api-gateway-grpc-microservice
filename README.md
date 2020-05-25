@@ -10,6 +10,7 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
 
 * Install docker
 * Install docker-compose
+* Install Makefile
 
 #### 2.  Steps to run this project
 
@@ -19,13 +20,22 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
     
     `yarn protoc`
     
-* To start project using docker
+* To start project using docker use the commands
+
+    | COMMAND | DESCRIPTION |
+    | ---  | --- |
+    | make dev  | Execute all application in mode development |
+    | make dev-grpc-customers  | Execute grpc-customers application in mode development |  
+    | make dev-grpc-users  | Execute grpc-users application in mode development |      
+    | make lint-fix-gateway-api  | Execute command `yarn lint:fix` in gateway api |  
+    | make protoc-grpc-customers  | Execute command `yarn protoc` to app-customers |  
+    | make protoc-grpc-users  | Execute command `yarn protoc` to app-users |       
+   
+   
+  
+* note: if start project in mode `production` change the script `docker/nodejs/entrypoint-server.sh`
         
-    `docker-compose up --build`
-        
-    * note: if start project in mode `production` change the script `docker/nodejs/entrypoint-server.sh`:
-        
-        from `yarn dev` to ` yarn build && yarn start`
+     from `yarn dev` to ` yarn build && yarn start`
  
        
 ##### 2.2. Testing the Gateway API gRPC
