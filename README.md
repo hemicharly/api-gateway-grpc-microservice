@@ -1,4 +1,4 @@
-## Gateway and gRPC microservice with Typescript
+## Gateway API and gRPC microservice with Typescript
 Gateway and gRPC microservice example of crud with typescript and nodejs
 
 <p align="center">
