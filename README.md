@@ -1,7 +1,9 @@
 ## Gateway and gRPC microservice with Typescript
 Gateway and gRPC microservice example of crud with typescript and nodejs
 
-<img src="architecture.svg" />
+<p align="center">
+    <img src="architecture.svg" />
+</p>
 
 #### 1. Requirements Installation
 
