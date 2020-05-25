@@ -6,20 +6,20 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
     <img src="architecture.png" />
 </p>
 
-#### 1. Requirements Installation:
+#### 1. Requirements Installation
 
 * Install docker
 * Install docker-compose
 
-#### 2.  Steps to run this project:
+#### 2.  Steps to run this project
 
 ##### 2.1. Start project in mode development
 
-* To create proto interfaces in the project gRPC microservices, use the script `script/protoc.sh`:
+* To create proto interfaces in the project gRPC microservices, use the script `script/protoc.sh`
     
     `yarn protoc`
     
-* To start project using docker:
+* To start project using docker
         
     `docker-compose up --build`
         
@@ -28,9 +28,9 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
         from `yarn dev` to ` yarn build && yarn start`
  
        
-##### 2.2. Testing the Gateway API gRPC:
+##### 2.2. Testing the Gateway API gRPC
 
-   * Access gateway gRPC in: `http://localhost:3005`
+   * Access gateway gRPC in `http://localhost:3005`
     
         | METHOD | SERVICES |
         | ---  | --- |
@@ -41,10 +41,10 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
         | DELETE | /customers/12385 |
         
         
-##### 2.3. Testing the gRPC Microservices using BloomRPC:
+##### 2.3. Testing the gRPC Microservices using BloomRPC
 
 * To install BloomRPC access the [guide](https://github.com/uw-labs/bloomrpc)
-* Access Microservice Customers gRPC in: `127.0.0.1:50051`
-* Access Microservice Users gRPC in: `127.0.0.1:50052`
+* Access Microservice Customers gRPC in `127.0.0.1:50051`
+* Access Microservice Users gRPC in `127.0.0.1:50052`
 
 <img src="editor-preview.gif" />
