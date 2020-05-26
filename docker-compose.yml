@@ -12,7 +12,6 @@ services:
       - ./app-customers:/opt/app
     entrypoint: ["entrypoint-server.sh"]
 
-
   grpc-users:
     container_name: grpc-users
     build:
@@ -23,6 +22,18 @@ services:
     volumes:
       - ./app-users:/opt/app
     entrypoint: ["entrypoint-server.sh"]
+
+  grpc-products:
+    container_name: grpc-products
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    ports:
+      - 50053:50053
+    volumes:
+      - ./app-products:/opt/app
+    entrypoint: ["entrypoint-server.sh"]
+
 
 
   api-gateway-grcp:

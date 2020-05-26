@@ -10,6 +10,10 @@ dev-grpc-customers:
 dev-grpc-users:
 	docker-compose up --build grpc-users
 
+# Execute grpc-products application in mode development
+dev-grpc-products:
+	docker-compose up --build grpc-products
+
 
 
 ####################################################################################
@@ -27,3 +31,7 @@ protoc-grpc-customers:
 # Execute command yarn protoc to app-users
 protoc-grpc-users:
 	cd app-users && yarn protoc
+
+# Execute command script/protoc.sh to app-products
+protoc-grpc-products:
+	app-products/scripts/protoc.sh
