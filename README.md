@@ -1,6 +1,6 @@
-## Gateway API and gRPC microservice with Typescript
+## Gateway API and gRPC microservice with Typescript and Python
 
-Gateway API and gRPC microservice example of crud with typescript and nodejs
+Gateway API and gRPC microservice example of crud with typescript in nodejs and python
 
 <p align="center">
     <img src="architecture.png" />
@@ -27,9 +27,11 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
     | make dev  | Execute all application in mode development |
     | make dev-grpc-customers  | Execute grpc-customers application in mode development |  
     | make dev-grpc-users  | Execute grpc-users application in mode development |      
+    | make dev-grpc-products  | Execute grpc-products application in mode development |  
     | make lint-fix-gateway-api  | Execute command `yarn lint:fix` in gateway api |  
     | make protoc-grpc-customers  | Execute command `yarn protoc` to app-customers |  
-    | make protoc-grpc-users  | Execute command `yarn protoc` to app-users |       
+    | make protoc-grpc-users  | Execute command `yarn protoc` to app-users |   
+    | make protoc-grpc-products  | Execute command `script/protoc.sh` to app-products |      
    
    
   
