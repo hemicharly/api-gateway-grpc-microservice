@@ -46,9 +46,11 @@ services:
     links:
       - grpc-customers
       - grpc-users
+      - grpc-products
     depends_on:
       - grpc-customers
       - grpc-users
+      - grpc-products
     volumes:
       - ./app-gateway:/opt/app
     entrypoint: ["entrypoint-server.sh"]
