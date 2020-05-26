@@ -1,6 +1,6 @@
-## Gateway API and gRPC microservice with Typescript and Python
+## Gateway API and gRPC microservices with NodeJs and Python
 
-Gateway API and gRPC microservice example of crud with typescript in nodejs and python
+Gateway API and microservices in gRPC with nodejs and python. Examples for study purposes.
 
 <p align="center">
     <img src="architecture.png" />
