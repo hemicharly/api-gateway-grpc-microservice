@@ -14,6 +14,9 @@ dev-grpc-users:
 dev-grpc-products:
 	docker-compose up --build grpc-products
 
+# Execute grpc-orders application in mode development
+dev-grpc-orders:
+	docker-compose up --build grpc-orders
 
 
 ####################################################################################

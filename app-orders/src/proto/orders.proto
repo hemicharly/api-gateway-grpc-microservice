@@ -1,0 +1,46 @@
+syntax = 'proto3';
+
+package Orders;
+
+service Orders {
+  rpc GetAll(Empty) returns (OrdersResponseList) {}
+  rpc Insert (OrdersRequest) returns (OrdersResponse) {}
+}
+
+message Empty {}
+
+message OrdersItemRequest {
+  string productsId = 1;
+  float price = 2;
+  int32 quantity = 3;
+}
+
+message OrdersItemResponse {
+  string id = 1;
+  string ordersId = 2;
+  string productsId = 3;
+  float price = 4;
+  int32 quantity = 5;
+  float totalItem = 6;
+}
+
+message OrdersRequest {
+  string customersId = 1;
+  string dateOrders = 2;
+  repeated OrdersItemRequest ordersItemRequestList = 3;
+}
+
+message OrdersResponse {
+  string id = 1;
+  string customersId = 2;
+  string dateOrders = 3;
+  repeated OrdersItemResponse ordersItemResponse = 4;
+  float totalOrders = 5;
+}
+
+message OrdersResponseList {
+  repeated OrdersResponse ordersResponseList = 1;
+}
+
+
+
