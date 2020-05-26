@@ -55,6 +55,11 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
         | PUT  | /users |
         | DELETE | /users/6 |
         | POST | /users/login |
+        | GET  | /products |
+        | GET  | /products/3 |
+        | POST | /products |
+        | PUT  | /products |
+        | DELETE | /products/5 |
         
         
 ##### 2.3. Testing the gRPC Microservices using BloomRPC
@@ -62,5 +67,7 @@ Gateway API and gRPC microservice example of crud with typescript and nodejs
 * To install BloomRPC access the [guide](https://github.com/uw-labs/bloomrpc)
 * Access Microservice Customers gRPC in `127.0.0.1:50051`
 * Access Microservice Users gRPC in `127.0.0.1:50052`
+* Access Microservice Products gRPC in `127.0.0.1:50053`
+
 
 <img src="editor-preview.gif" />
