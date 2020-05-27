@@ -76,3 +76,7 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
 * Access Microservice Orders gRPC in `127.0.0.1:50054`
 
 <img src="editor-preview.gif" />
+
+##### 3. Reference
+
+* What is gRPC [guide](https://grpc.io/docs/guides/)
