@@ -1,7 +1,5 @@
 syntax = 'proto3';
 
-package Orders;
-
 service Orders {
   rpc GetAll(Empty) returns (OrdersResponseList) {}
   rpc Insert (OrdersRequest) returns (OrdersResponse) {}
