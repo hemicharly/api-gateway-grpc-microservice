@@ -18,7 +18,7 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
 
 * To create proto interfaces in the project gRPC microservices in nodejs and python, use the script `script/protoc.sh`
     
-    `yarn protoc`
+
     
 * To start project using docker use the commands
 
