@@ -56,10 +56,12 @@ services:
       - grpc-customers
       - grpc-users
       - grpc-products
+      - grpc-orders
     depends_on:
       - grpc-customers
       - grpc-users
       - grpc-products
+      - grpc-orders
     volumes:
       - ./app-gateway:/opt/app
     entrypoint: ["entrypoint-server.sh"]

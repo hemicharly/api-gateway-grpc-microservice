@@ -28,6 +28,7 @@ Gateway API and microservices in gRPC with nodejs and python. Examples for study
     | make dev-grpc-customers  | Execute grpc-customers application in mode development |  
     | make dev-grpc-users  | Execute grpc-users application in mode development |      
     | make dev-grpc-products  | Execute grpc-products application in mode development |  
+    | make dev-grpc-orders  | Execute grpc-orders application in mode development |
     | make lint-fix-gateway-api  | Execute command `yarn lint:fix` in gateway api |  
     | make protoc-grpc-customers  | Execute command `yarn protoc` to app-customers |  
     | make protoc-grpc-users  | Execute command `yarn protoc` to app-users |   
@@ -62,6 +63,8 @@ Gateway API and microservices in gRPC with nodejs and python. Examples for study
         | POST | /products |
         | PUT  | /products |
         | DELETE | /products/5 |
+        | GET  | /orders |
+        | POST | /orders |
         
         
 ##### 2.3. Testing the gRPC Microservices using BloomRPC
@@ -70,6 +73,6 @@ Gateway API and microservices in gRPC with nodejs and python. Examples for study
 * Access Microservice Customers gRPC in `127.0.0.1:50051`
 * Access Microservice Users gRPC in `127.0.0.1:50052`
 * Access Microservice Products gRPC in `127.0.0.1:50053`
-
+* Access Microservice Orders gRPC in `127.0.0.1:50054`
 
 <img src="editor-preview.gif" />
