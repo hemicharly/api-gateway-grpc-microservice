@@ -34,7 +34,16 @@ services:
       - ./app-products:/opt/app
     entrypoint: ["entrypoint-server.sh"]
 
-
+  grpc-orders:
+    container_name: grpc-orders
+    build:
+      context: .
+      dockerfile: docker/go/Dockerfile
+    ports:
+      - 50054:50054
+    volumes:
+      - ./app-orders:/opt/app
+    entrypoint: ["entrypoint-server.sh"]
 
   api-gateway-grcp:
     container_name: api-gateway-grcp
@@ -47,10 +56,12 @@ services:
       - grpc-customers
       - grpc-users
       - grpc-products
+      - grpc-orders
     depends_on:
       - grpc-customers
       - grpc-users
       - grpc-products
+      - grpc-orders
     volumes:
       - ./app-gateway:/opt/app
     entrypoint: ["entrypoint-server.sh"]
