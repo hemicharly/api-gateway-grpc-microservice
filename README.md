@@ -16,7 +16,7 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
 
 ##### 2.1. Start project in mode development
 
-* To create proto interfaces in the project gRPC microservices, use the script `script/protoc.sh`
+* To create proto interfaces in the project gRPC microservices in nodejs and python, use the script `script/protoc.sh`
     
     `yarn protoc`
     
@@ -36,7 +36,7 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
    
    
   
-* note: if start project in mode `production` change the script `docker/nodejs/entrypoint-server.sh`
+* note: if start project nodejs in mode `production` change the script `docker/nodejs/entrypoint-server.sh`
         
      from `yarn dev` to ` yarn build && yarn start`
  
