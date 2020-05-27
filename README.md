@@ -1,6 +1,6 @@
-## Gateway API and gRPC microservices with NodeJs and Python
+## Gateway API and gRPC microservices with NodeJs, Python and Golang
 
-Gateway API and microservices in gRPC with nodejs and python. Examples for study purposes.
+Gateway API and microservices in gRPC with nodejs, python and golang. Examples for study purposes.
 
 <p align="center">
     <img src="architecture.png" />
