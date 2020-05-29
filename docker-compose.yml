@@ -71,9 +71,15 @@ services:
     ports:
       - 3005:3005
     links:
-      - nginx-grpc
+      - grpc-customers
+      - grpc-users
+      - grpc-products
+      - grpc-orders
     depends_on:
-      - nginx-grpc
+      - grpc-customers
+      - grpc-users
+      - grpc-products
+      - grpc-orders
     volumes:
       - ./app-gateway:/opt/app
     entrypoint: ["entrypoint-server.sh"]
