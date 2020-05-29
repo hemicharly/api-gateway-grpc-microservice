@@ -19,6 +19,11 @@ dev-grpc-orders:
 	docker-compose up --build grpc-orders
 
 
+# Execute nginx-grpc application using hostname
+nginx-start:
+	export HOST_NAME=$(HOST_NAME); \
+	docker-compose up --build nginx-grpc
+
 ####################################################################################
 # Execute command lint:fix in gateway api
 lint-fix-gateway-api:

@@ -32,7 +32,10 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
     | make lint-fix-gateway-api  | Execute command `yarn lint:fix` in gateway api |  
     | make protoc-grpc-customers  | Execute command `yarn protoc` to app-customers |  
     | make protoc-grpc-users  | Execute command `yarn protoc` to app-users |   
-    | make protoc-grpc-products  | Execute command `script/protoc.sh` to app-products |      
+    | make protoc-grpc-products  | Execute command `script/protoc.sh` to app-products |
+    | make nginx-start HOST_NAME=NGINX-01  | Execute nginx-grpc application using hostname |
+          
+          
    
    
   
