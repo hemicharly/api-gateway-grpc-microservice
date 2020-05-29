@@ -86,3 +86,5 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
 ##### 3. Reference
 
 * What is gRPC [guide](https://grpc.io/docs/guides/)
+* Nginx with gRPC [guide](https://www.nginx.com/blog/nginx-1-13-10-grpc/?utm_campaign=core&utm_medium=blog&utm_source=youtube&utm_content=grpc)
+* What is Amplify Nginx [guide](https://amplify.nginx.com/docs/)
