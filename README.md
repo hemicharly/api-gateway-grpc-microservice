@@ -16,10 +16,13 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
 
 ##### 2.1. Start project in mode development
 
-* To create proto interfaces in the project gRPC microservices in nodejs and python, use the script `script/protoc.sh`
-    
 
+* Copy file `docker-compose.override.dist.yml` with name `docker-compose.override.yml`
     
+    * Configure the environments: `API_KEY` is optional to monitor with amplify nginx
+
+* To create proto interfaces in the project gRPC microservices in nodejs and python, use the script `script/protoc.sh`    
+
 * To start project using docker use the commands
 
     | COMMAND | DESCRIPTION |
