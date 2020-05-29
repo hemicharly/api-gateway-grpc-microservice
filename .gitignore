@@ -215,3 +215,7 @@ fabric.properties
 .idea
 /dist
 /docker-compose.override.yml
+
+
+docker/nginx/logs
+!docker/nginx/logs/.gitkeep
