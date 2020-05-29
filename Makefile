@@ -18,6 +18,14 @@ dev-grpc-products:
 dev-grpc-orders:
 	docker-compose up --build grpc-orders
 
+# Execute api-gateway-grcp application in mode development
+dev-api-gateway-grcp:
+	docker-compose up --build api-gateway-grcp
+
+# Execute nginx-grpc application using hostname
+nginx-start:
+	export HOST_NAME=$(HOST_NAME); \
+	docker-compose up --build nginx-grpc
 
 ####################################################################################
 # Execute command lint:fix in gateway api

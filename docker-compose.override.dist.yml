@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  nginx-grpc:
+    environment:
+      TZ: GMT-3
+      NGINX_SERVER_NAME: nginx-grpc.localhost
+      API_KEY: your key amplify nginx
+
+  api-gateway-grcp:
+    environment:
+      URL_CUSTOMERS: grpc-customers:50051
+      URL_USERS: grpc-users:50052
+      URL_PRODUCTS: grpc-products:50053
+      URL_ORDERS: grpc-orders:50054

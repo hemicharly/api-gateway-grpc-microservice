@@ -45,6 +45,24 @@ services:
       - ./app-orders:/opt/app
     entrypoint: ["entrypoint-server.sh"]
 
+  nginx-grpc:
+    container_name: nginx-grpc
+    hostname: "${HOST_NAME}"
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - 8085:80
+    links:
+        - grpc-customers
+    depends_on:
+      - grpc-customers
+    environment:
+      TZ: GMT-3
+      NGINX_SERVER_NAME: nginx-grpc.localhost
+    volumes:
+      - ./docker/nginx/logs/nginx:/var/log/nginx
+
   api-gateway-grcp:
     container_name: api-gateway-grcp
     build:

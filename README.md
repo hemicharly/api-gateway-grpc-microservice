@@ -16,10 +16,13 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
 
 ##### 2.1. Start project in mode development
 
-* To create proto interfaces in the project gRPC microservices in nodejs and python, use the script `script/protoc.sh`
-    
 
+* Copy file `docker-compose.override.dist.yml` with name `docker-compose.override.yml`
     
+    * Configure the environments: `API_KEY` is optional to monitor with amplify nginx
+
+* To create proto interfaces in the project gRPC microservices in nodejs and python, use the script `script/protoc.sh`    
+
 * To start project using docker use the commands
 
     | COMMAND | DESCRIPTION |
@@ -29,10 +32,14 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
     | make dev-grpc-users  | Execute grpc-users application in mode development |      
     | make dev-grpc-products  | Execute grpc-products application in mode development |  
     | make dev-grpc-orders  | Execute grpc-orders application in mode development |
+    | make dev-api-gateway-grcp  | Execute api-gateway-grcp application in mode development |   
     | make lint-fix-gateway-api  | Execute command `yarn lint:fix` in gateway api |  
     | make protoc-grpc-customers  | Execute command `yarn protoc` to app-customers |  
     | make protoc-grpc-users  | Execute command `yarn protoc` to app-users |   
-    | make protoc-grpc-products  | Execute command `script/protoc.sh` to app-products |      
+    | make protoc-grpc-products  | Execute command `script/protoc.sh` to app-products |
+    | make nginx-start HOST_NAME=NGINX-01  | Execute nginx-grpc application using hostname |
+          
+          
    
    
   
@@ -80,3 +87,5 @@ Gateway API and microservices in gRPC with nodejs, python and golang. Examples f
 ##### 3. Reference
 
 * What is gRPC [guide](https://grpc.io/docs/guides/)
+* Nginx with gRPC [guide](https://www.nginx.com/blog/nginx-1-13-10-grpc/?utm_campaign=core&utm_medium=blog&utm_source=youtube&utm_content=grpc)
+* What is Amplify Nginx [guide](https://amplify.nginx.com/docs/)

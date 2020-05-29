@@ -1,8 +1,9 @@
 import LoadClientGRPC from '../../config/grpc/LoadClientGRPC';
+import 'dotenv/config';
 
 const customersClient: any = LoadClientGRPC.loadClient({
     serviceName: 'Customers',
-    address: 'grpc-customers:50051',
+    address: process.env.URL_CUSTOMERS || 'grpc-customers:50051',
     fileName: 'customers'
 });
 
