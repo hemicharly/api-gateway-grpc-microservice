@@ -17,6 +17,7 @@ class CustomersServer implements ICustomersServer {
     getAll = async (call: grpc.ServerUnaryCall<Empty>, callback: grpc.sendUnaryData<CustomersResponseList>): Promise<void> => {
         try {
             const response: CustomersResponseList = await CustomersRepository.findAll();
+            return;
             callback(null, response);
         } catch (e) {
             callback(e, null);
