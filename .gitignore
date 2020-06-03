@@ -219,3 +219,5 @@ fabric.properties
 
 docker/nginx/logs
 !docker/nginx/logs/.gitkeep
+
+app-orders/src/proto/*.pb.go
