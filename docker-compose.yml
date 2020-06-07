@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: docker/nodejs/Dockerfile
     environment:
-      port: 40051
+      PORT: 40051
     ports:
       - 40051:40051
     volumes:
@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: docker/nodejs/Dockerfile
     environment:
-      port: 50051
+      PORT: 50051
     ports:
       - 50051:50051
     volumes:
