@@ -1,11 +1,26 @@
 version: '3.7'
 
 services:
-  grpc-customers:
-    container_name: grpc-customers
+  grpc-customers1:
+    container_name: grpc-customers1
     build:
       context: .
       dockerfile: docker/nodejs/Dockerfile
+    environment:
+      port: 40051
+    ports:
+      - 40051:40051
+    volumes:
+      - ./app-customers:/opt/app
+    entrypoint: ["entrypoint-server.sh"]
+
+  grpc-customers2:
+    container_name: grpc-customers2
+    build:
+      context: .
+      dockerfile: docker/nodejs/Dockerfile
+    environment:
+      port: 50051
     ports:
       - 50051:50051
     volumes:
@@ -54,12 +69,11 @@ services:
     ports:
       - 8085:80
     links:
-        - grpc-customers
+      - grpc-customers1
+      - grpc-customers2
     depends_on:
-      - grpc-customers
-    environment:
-      TZ: GMT-3
-      NGINX_SERVER_NAME: nginx-grpc.localhost
+      - grpc-customers1
+      - grpc-customers2
     volumes:
       - ./docker/nginx/logs/nginx:/var/log/nginx
 
@@ -71,12 +85,12 @@ services:
     ports:
       - 3005:3005
     links:
-      - grpc-customers
+      - nginx-grpc
       - grpc-users
       - grpc-products
       - grpc-orders
     depends_on:
-      - grpc-customers
+      - nginx-grpc
       - grpc-users
       - grpc-products
       - grpc-orders

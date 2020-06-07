@@ -4,7 +4,7 @@ dev:
 
 # Execute grpc-customers application in mode development
 dev-grpc-customers:
-	docker-compose up --build grpc-customers
+	docker-compose up --build grpc-customers1 customers2
 
 # Execute grpc-users application in mode development
 dev-grpc-users:
@@ -29,7 +29,7 @@ nginx-start:
 
 ####################################################################################
 # Execute command lint:fix in gateway api
-lint-fix-gateway-api:
+lint-fix-api-gateway:
 	docker-compose exec api-gateway-grcp yarn lint:fix
 
 

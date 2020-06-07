@@ -8,7 +8,7 @@ amplify_imagename=$HOSTNAME
 
 rm -rf /var/log/nginx/*.log
 
-envsubst '\${NGINX_SERVER_NAME}' \
+envsubst '\${NGINX_SERVER_NAME}\${GRPC_SERVER_1}\${GRPC_SERVER_2}' \
     < /etc/nginx/server.template.conf \
     > /etc/nginx/sites-enabled/server_host.conf
 

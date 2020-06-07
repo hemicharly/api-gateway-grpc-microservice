@@ -5,11 +5,13 @@ services:
     environment:
       TZ: GMT-3
       NGINX_SERVER_NAME: nginx-grpc.localhost
+      GRPC_SERVER_1: grpc-customers1:40051
+      GRPC_SERVER_2: grpc-customers2:50051
       API_KEY: your key amplify nginx
 
   api-gateway-grcp:
     environment:
-      URL_CUSTOMERS: grpc-customers:50051
+      URL_CUSTOMERS: your ip host:8085
       URL_USERS: grpc-users:50052
       URL_PRODUCTS: grpc-products:50053
       URL_ORDERS: grpc-orders:50054
