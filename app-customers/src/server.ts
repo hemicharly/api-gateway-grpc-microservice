@@ -7,9 +7,7 @@ protoIndex();
 
 const port: string | number = process.env.PORT || 50051;
 
-type StartServerType = () => void;
-
-export const startServer: StartServerType = (): void => {
+export const startServer = (): void => {
     const server: grpc.Server = new grpc.Server();
 
     /*TODO: Register controllers*/
