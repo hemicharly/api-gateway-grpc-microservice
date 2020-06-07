@@ -1,3 +1,3 @@
 import server from './ConnectServer';
 
-server.start();
+server.startServer();

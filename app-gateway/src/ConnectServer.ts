@@ -1,55 +1,32 @@
-import * as dotenv from 'dotenv';
+import 'dotenv/config';
 import * as http from 'http';
 import App from './App';
 
 
 class ConnectServer {
-
-    protected server: http.Server;
-    protected port: string | number | boolean;
+    protected port: number;
 
     constructor() {
-        dotenv.config();
-        this.port = ConnectServer.normalizePort(Number(process.env.PORT) || 3005);
-        this.initialValidation();
+        this.port = this.normalizePort(Number(process.env.PORT) || 3005);
+        this.validateEnvironment();
     }
 
-
-    public start(): void {
-        this.initServer();
+    public startServer(): void {
+        const server: http.Server = http.createServer(new App(this.port).app);
+        server.listen(this.port);
+        server.on('error', this.onError);
+        server.on('listening', () => console.warn('Gateway gRPC server started'));
     }
 
-
-    private static normalizePort(value: number | string): number | string | boolean {
-        const _port: number = typeof value === 'string' ? parseInt(value, 10) : value;
-        if (isNaN(_port)) return value;
-        if (_port >= 0) return _port;
-        return false;
+    private normalizePort(value: number): number {
+        if (isNaN(value)) return value;
+        if (value >= 0) return value;
+        throw new Error('PORT is undefined');
     }
 
-
-    private static onListening(): void {
-        console.warn('Gateway gRPC server started');
-    }
-
-    private initServer(): void {
-        const app = new App().app;
-        app.set('port', this.port);
-        this.server = http.createServer(app);
-        this.server.listen(this.port);
-        this.server.on('error', this.onError);
-        this.server.on('listening', ConnectServer.onListening);
-    }
-
-
-    private initialValidation(): void {
+    private validateEnvironment(): void {
         if (!process.env.NODE_ENV) {
             console.error('NODE_ENV is undefined.');
-            process.exit(1);
-        }
-
-        if (!this.port) {
-            console.error('PORT is undefined.');
             process.exit(1);
         }
 
@@ -72,7 +49,6 @@ class ConnectServer {
             process.exit(1);
         });
     }
-
 
     private onError(error: NodeJS.ErrnoException): void {
         if (error.syscall !== 'listen') throw error;

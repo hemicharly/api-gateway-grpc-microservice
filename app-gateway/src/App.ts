@@ -1,15 +1,15 @@
 import compression from 'compression';
 import cors from 'cors';
-import * as dotenv from 'dotenv';
+import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
 import IndexRouter from './api/IndexRouter';
 
-class App {
+export default class App {
 
-    public constructor() {
-        dotenv.config();
+    public constructor(port: number) {
         this.app = express();
+        this.app.set('port', port)
         this.applyMiddleware();
         this.router();
     }
@@ -29,5 +29,3 @@ class App {
     }
 
 }
-
-export default App;

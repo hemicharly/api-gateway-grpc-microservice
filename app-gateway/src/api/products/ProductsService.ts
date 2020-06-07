@@ -1,5 +1,5 @@
-import LoadClientGRPC from '../../config/grpc/LoadClientGRPC';
 import 'dotenv/config';
+import LoadClientGRPC from '../../config/grpc/LoadClientGRPC';
 
 const productsClient: any = LoadClientGRPC.loadClient({
     serviceName: 'Products',
