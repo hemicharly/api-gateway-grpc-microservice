@@ -5,7 +5,6 @@ cd /opt/app
 echo "Install packaged..."
 yarn
 
-echo "$NODE_ENV"
 if [ "$NODE_ENV" = "development" ]; then
   echo "Start development application server..."
   yarn dev

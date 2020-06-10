@@ -11,3 +11,6 @@ WORKDIR $APP_HOME
 
 COPY docker/nodejs/entrypoint-server.sh /usr/local/bin
 RUN chmod -R 777 /usr/local/bin/entrypoint-server.sh
+
+COPY docker/nodejs/entrypoint-microservices.sh /usr/local/bin
+RUN chmod -R 777 /usr/local/bin/entrypoint-microservices.sh
