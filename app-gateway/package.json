@@ -8,7 +8,10 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpileOnly src/Index.ts",
     "lint": "tslint --project tsconfig.json",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "clean": "rm -rf build/*",
+    "build": "tsc",
+    "start": "pm2-runtime start ecosystem.config.js --env production"
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.5.3",

@@ -20,7 +20,11 @@ dev-grpc-orders:
 
 # Execute api-gateway-grcp application in mode development
 dev-api-gateway-grcp:
-	docker-compose up --build api-gateway-grcp
+	NODE_ENV=development docker-compose up --build api-gateway-grcp
+
+# Execute api-gateway-grcp application in mode production
+prod-api-gateway-grcp:
+	NODE_ENV=production docker-compose up --build api-gateway-grcp
 
 # Execute nginx-grpc application using hostname
 nginx-start:

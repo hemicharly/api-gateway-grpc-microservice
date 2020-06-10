@@ -12,7 +12,7 @@ services:
       - 40051:40051
     volumes:
       - ./app-customers:/opt/app
-    entrypoint: ["entrypoint-server.sh"]
+    entrypoint: ["entrypoint-microservices.sh"]
 
   grpc-customers2:
     container_name: grpc-customers2
@@ -25,7 +25,7 @@ services:
       - 50051:50051
     volumes:
       - ./app-customers:/opt/app
-    entrypoint: ["entrypoint-server.sh"]
+    entrypoint: ["entrypoint-microservices.sh"]
 
   grpc-users:
     container_name: grpc-users
@@ -36,7 +36,7 @@ services:
       - 50052:50052
     volumes:
       - ./app-users:/opt/app
-    entrypoint: ["entrypoint-server.sh"]
+    entrypoint: ["entrypoint-microservices.sh"]
 
   grpc-products:
     container_name: grpc-products

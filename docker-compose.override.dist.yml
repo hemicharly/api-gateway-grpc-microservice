@@ -11,6 +11,9 @@ services:
 
   api-gateway-grcp:
     environment:
+      NODE_ENV:
+      TZ: "America/Fortaleza"
+      MAX_MEMORY_RESTART: 384M
       URL_CUSTOMERS: your ip host:8085
       URL_USERS: grpc-users:50052
       URL_PRODUCTS: grpc-products:50053

@@ -221,3 +221,6 @@ docker/nginx/logs
 !docker/nginx/logs/.gitkeep
 
 app-orders/src/proto/*.pb.go
+
+/app-gateway/logs
+/app-gateway/build
