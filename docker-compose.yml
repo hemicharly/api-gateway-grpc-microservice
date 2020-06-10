@@ -84,16 +84,6 @@ services:
       dockerfile: docker/nodejs/Dockerfile
     ports:
       - 3005:3005
-    links:
-      - nginx-grpc
-      - grpc-users
-      - grpc-products
-      - grpc-orders
-    depends_on:
-      - nginx-grpc
-      - grpc-users
-      - grpc-products
-      - grpc-orders
     volumes:
       - ./app-gateway:/opt/app
     entrypoint: ["entrypoint-server.sh"]
