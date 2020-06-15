@@ -6,6 +6,7 @@
   "author": "Hemicharly Thiago",
   "main": "Index.js",
   "scripts": {
+    "debug": "ts-node-dev --inspect=0.0.0.0 --respawn --transpileOnly src/Index.ts",
     "dev": "ts-node-dev --respawn --transpileOnly src/Index.ts",
     "lint": "tslint --project tsconfig.json",
     "lint:fix": "yarn lint --fix",
