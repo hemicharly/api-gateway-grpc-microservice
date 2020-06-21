@@ -12,7 +12,8 @@
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "incremental": true
   },
   "include": [
     "**/**/*"
