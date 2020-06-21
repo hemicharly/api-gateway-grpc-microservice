@@ -8,6 +8,7 @@
   "scripts": {
     "debug": "ts-node-dev --inspect=0.0.0.0 --respawn --transpileOnly src/Index.ts",
     "dev": "ts-node-dev --respawn --transpileOnly src/Index.ts",
+    "test": "NODE_ENV=test mocha -r ts-node/register tests/**/*.spec.ts",
     "lint": "tslint --project tsconfig.json",
     "lint:fix": "yarn lint --fix",
     "clean": "rm -rf build/*",
@@ -15,6 +16,8 @@
     "start": "pm2-runtime start ecosystem.config.js --env production"
   },
   "dependencies": {
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.12.2",
     "@grpc/proto-loader": "^0.5.3",
     "express": "^4.17.1",
     "grpc": "^1.24.2",
@@ -23,22 +26,30 @@
     "dotenv": "^8.2.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
-    "helmet": "^3.21.3"
+    "helmet": "^3.21.3",
+    "knex": "^0.21.1",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",
     "@types/cors": "^2.8.6",
     "@types/helmet": "^0.0.45",
     "@types/node": "^13.9.0",
+    "@types/mysql": "^2.15.14",
+    "@types/mock-knex": "^0.4.3",
     "minimist": ">=1.2.2",
     "@types/redis": "^2.8.16",
     "@types/uuid": "^7.0.2",
+    "@types/mocha": "^7.0.2",
+    "mock-knex": "^0.4.9",
+    "chai": "^4.2.0",
+    "mocha": "^8.0.1",
     "ts-node": "^8.6.2",
     "ts-node-dev": "^1.0.0-pre.44",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^9.0.0",
     "tslint-sonarts": "^1.9.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.5"
   }
 }
