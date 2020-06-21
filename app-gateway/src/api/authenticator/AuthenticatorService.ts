@@ -3,8 +3,7 @@ import DbConnect from '../../config/database/DbConnect';
 export default class AuthenticatorService {
     public static async findAll(): Promise<any> {
         const result = await DbConnect.raw('select current_timestamp() as date_time');
-        console.log('AuthenticatorService: ', result);
-        return Promise.resolve(result);
+        return Promise.resolve(result[0]);
     }
 
     public static async findById(id: string): Promise<any> {

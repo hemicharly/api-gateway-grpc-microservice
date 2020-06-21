@@ -11,6 +11,7 @@ services:
 
   api-gateway-grcp:
     environment:
+      BASE_URL_TEST: http://api-gateway-grcp:3005
       NODE_ENV: development
       DEBUG: 0
       TZ: "America/Fortaleza"

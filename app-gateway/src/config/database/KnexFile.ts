@@ -29,36 +29,25 @@ if (!process.env.DB_HOST) {
     process.exit(1);
 }
 
-let configDatabase: Knex;
-
-if (process.env.NODE_ENV !== 'test') {
-    configDatabase = {
-        client: 'mysql',
-        connection: {
-            database: process.env.DB_DATABASE,
-            host: process.env.DB_HOST,
-            password: process.env.DB_PASSWORD,
-            user: process.env.DB_USER_NAME
-        },
-        pool: {
-            min: 2,
-            max: 15,
-            idleTimeoutMillis: 100000
-        },
-        migrations: {
-            directory: `${parentKnex}/migrations`
-        },
-        seeds: {
-            directory: `${parentKnex}/seeds`
-        }
-    };
-}
-
-if (process.env.NODE_ENV === 'test') {
-    configDatabase =  {
-        client: 'mysql',
-        debug: false
-    };
+const configDatabase: Knex = {
+    client: 'mysql',
+    connection: {
+        database: process.env.DB_DATABASE,
+        host: process.env.DB_HOST,
+        password: process.env.DB_PASSWORD,
+        user: process.env.DB_USER_NAME
+    },
+    pool: {
+        min: 2,
+        max: 15,
+        idleTimeoutMillis: 100000
+    },
+    migrations: {
+        directory: `${parentKnex}/migrations`
+    },
+    seeds: {
+        directory: `${parentKnex}/seeds`
+    }
 }
 
 export {configDatabase};
