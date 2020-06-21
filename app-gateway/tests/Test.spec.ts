@@ -34,8 +34,6 @@ describe('POST /authenticator', () => {
             .post('/authenticator')
             .send();
 
-        console.log(body);
-
         expect(status).eq(400, 'Status code 400');
         expect(body).to.have.property('status');
         expect(body.status).not.eq('', 'status not empty');
