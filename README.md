@@ -32,7 +32,8 @@ API Gateway with nodejs and microservices in gRPC with nodejs, python and golang
     | make dev-grpc-users  | Execute grpc-users application in mode development |      
     | make dev-grpc-products  | Execute grpc-products application in mode development |  
     | make dev-grpc-orders  | Execute grpc-orders application in mode development |
-    | make dev-api-gateway-grcp  | Execute api-gateway-grcp application in mode development |   
+    | make dev-api-gateway-grcp  | Execute api-gateway-grcp application in mode development |  
+    | make prod-api-gateway-grcp  | Execute api-gateway-grcp application in mode production |  
     | make lint-fix-api-gateway  | Execute command `yarn lint:fix` in api gateway |  
     | make protoc-grpc-customers  | Execute command `yarn protoc` to app-customers |  
     | make protoc-grpc-users  | Execute command `yarn protoc` to app-users |   

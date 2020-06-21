@@ -11,7 +11,7 @@ services:
 
   api-gateway-grcp:
     environment:
-      NODE_ENV:
+      DEBUG: 0
       TZ: "America/Fortaleza"
       MAX_MEMORY_RESTART: 384M
       URL_CUSTOMERS: your ip host:8085
