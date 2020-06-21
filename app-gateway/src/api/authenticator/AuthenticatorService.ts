@@ -1,4 +1,5 @@
 import DbConnect from '../../config/database/DbConnect';
+import AuthenticatorRequest from './input/AuthenticatorRequest';
 
 export default class AuthenticatorService {
     public static async findAll(): Promise<any> {
@@ -6,19 +7,11 @@ export default class AuthenticatorService {
         return Promise.resolve(result[0]);
     }
 
-    public static async findById(id: string): Promise<any> {
-        return null;
-    }
-
-    public static async create(customersRequest: any): Promise<any> {
-        return null;
-    }
-
-    public static async update(customersRequest: any): Promise<any> {
-        return null;
-    }
-
-    public static async remove(id: string): Promise<any> {
-        return null;
+    public static async token(authenticatorRequest: AuthenticatorRequest): Promise<any> {
+        console.log(authenticatorRequest);
+        return {
+            access_token: 'gfsdgfdsgfdsgrtfdsgre-fdsggfdsgfdgsd4534gfhgfd',
+            expired_in: 123456
+        }
     }
 }

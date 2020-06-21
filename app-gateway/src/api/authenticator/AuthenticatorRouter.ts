@@ -4,10 +4,6 @@ import AuthenticatorController from './AuthenticatorController';
 const router = express.Router();
 
 router.get('/',  AuthenticatorController.findAll);
-router.get('/:id',  AuthenticatorController.findById);
-router.post('/',  AuthenticatorController.create);
-router.put('/',  AuthenticatorController.update);
-router.delete('/:id',  AuthenticatorController.remove);
-
+router.post('/',  AuthenticatorController.token);
 
 export default router;
