@@ -20,7 +20,7 @@ dev-grpc-orders:
 
 # Execute api-gateway-grcp application in mode development
 dev-api-gateway-grcp:
-	NODE_ENV=development docker-compose up --build api-gateway-grcp
+	docker-compose up --build api-gateway-grcp
 
 # Execute api-gateway-grcp application in mode production
 prod-api-gateway-grcp:
@@ -32,11 +32,14 @@ nginx-start:
 	docker-compose up --build nginx-grpc
 
 ####################################################################################
-# Execute command lint:fix in gateway api
+# Execute command lint:fix in api gateway
 lint-fix-api-gateway:
 	docker-compose exec api-gateway-grcp yarn lint:fix
 
-
+####################################################################################
+# Execute command tests in api gateway
+test-api-gateway-grpc:
+	docker-compose exec api-gateway-grcp yarn test
 
 ####################################################################################
 # Execute command yarn protoc to app-customers

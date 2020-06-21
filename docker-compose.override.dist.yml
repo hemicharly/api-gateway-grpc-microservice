@@ -11,6 +11,7 @@ services:
 
   api-gateway-grcp:
     environment:
+      NODE_ENV: development
       DEBUG: 0
       TZ: "America/Fortaleza"
       MAX_MEMORY_RESTART: 384M
@@ -18,3 +19,23 @@ services:
       URL_USERS: grpc-users:50052
       URL_PRODUCTS: grpc-products:50053
       URL_ORDERS: grpc-orders:50054
+      DB_HOST: mysql-api-gateway-grcp
+      DB_DATABASE: api-gateway-grcp
+      DB_USER_NAME: root
+      DB_PASSWORD: root@2020
+
+  mysql-api-gateway-grcp:
+    container_name: mysql-api-gateway-grcp
+    image: mysql:5.7
+    ports:
+      - 33009:3306
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: api-gateway-grcp
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root@2020
+      MYSQL_ROOT_PASSWORD: root@2020
+
+volumes:
+  dbdata: ~
