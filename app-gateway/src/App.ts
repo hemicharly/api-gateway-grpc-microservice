@@ -4,6 +4,8 @@ import 'dotenv/config';
 import express from 'express';
 import helmet from 'helmet';
 import IndexRouter from './api/IndexRouter';
+import errorMiddleware from './middleware/ErrorMiddleware';
+
 
 export default class App {
 
@@ -12,6 +14,7 @@ export default class App {
         this.app.set('port', port)
         this.applyMiddleware();
         this.router();
+        this.app.use(errorMiddleware);
     }
 
     public app: express.Application;
