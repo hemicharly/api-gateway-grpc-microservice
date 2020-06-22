@@ -1,17 +1,27 @@
 import {expect} from 'chai';
 import 'dotenv/config';
 import 'mocha';
+import mockKnex from 'mock-knex';
 import request from 'supertest';
 import app from '../src/App';
 
+const tracker = mockKnex.getTracker();
 
 describe('GET /authenticator', () => {
+    tracker.install();
+
+    before(() => {
+        tracker.on('query', (query) => {
+            query.response([{date_time: new Date()}]);
+        });
+    });
+
     it('200 Ok', async () => {
         const {status, body} = await request(app)
             .get('/authenticator')
         expect(status).eq(200, 'Status code 200');
-        expect(body[0]).to.have.property('date_time');
-        expect(body[0].date_time).not.eq('', 'date_time not empty');
+        expect(body).to.have.property('date_time');
+        expect(body.date_time).not.eq('', 'date_time not empty');
     });
 });
 
@@ -36,7 +46,7 @@ describe('POST /authenticator', () => {
             .send();
 
         expect(status).eq(400, 'Status code 400');
-        expect(body).to.have.property('status');
+        expect(body).to.have.property('statusCode');
         expect(body.status).not.eq('', 'status not empty');
 
         expect(body).to.have.property('invalidParams');
