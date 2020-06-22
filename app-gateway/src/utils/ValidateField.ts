@@ -1,7 +1,7 @@
 import {plainToClass} from 'class-transformer';
 import {validate, ValidationError} from 'class-validator';
-import InvalidParamsException from '../exceptions/InvalidParamsException';
 import InvalidParams from '../exceptions/InvalidParams';
+import InvalidParamsException from '../exceptions/InvalidParamsException';
 
 
 export default class ValidateField {
@@ -17,7 +17,7 @@ export default class ValidateField {
                 };
                 return errors;
             })
-            throw new InvalidParamsException(400, invalidParams);
+            throw new InvalidParamsException(invalidParams);
         }
     }
 
