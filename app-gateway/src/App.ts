@@ -1,17 +1,17 @@
 import compression from 'compression';
 import cors from 'cors';
 import 'dotenv/config';
-import express from 'express';
+import express, {NextFunction, Request, Response} from 'express';
 import helmet from 'helmet';
 import IndexRouter from './api/IndexRouter';
+import RouteNotFoundException from './exceptions/RouteNotFoundException';
 import errorMiddleware from './middleware/ErrorMiddleware';
 
 
-export default class App {
+class App {
 
-    public constructor(port: number) {
+    public constructor() {
         this.app = express();
-        this.app.set('port', port)
         this.applyMiddleware();
         this.router();
         this.app.use(errorMiddleware);
@@ -29,6 +29,11 @@ export default class App {
 
     private router(): void {
         this.app.use('/', IndexRouter);
+        this.app.use((req: Request, res: Response, next: NextFunction) => {
+            next(new RouteNotFoundException());
+        });
     }
 
 }
+
+export default new App().app;

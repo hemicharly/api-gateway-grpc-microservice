@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import * as http from 'http';
-import App from './App';
+import app from './App';
 
 
 class ConnectServer {
@@ -12,7 +12,7 @@ class ConnectServer {
     }
 
     public startServer(): void {
-        const server: http.Server = http.createServer(new App(this.port).app);
+        const server: http.Server = http.createServer(app);
         server.listen(this.port);
         server.on('error', this.onError);
         server.on('listening', () => console.warn('Gateway gRPC server started'));
