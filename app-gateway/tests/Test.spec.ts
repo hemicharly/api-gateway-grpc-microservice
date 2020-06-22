@@ -2,11 +2,12 @@ import {expect} from 'chai';
 import 'dotenv/config';
 import 'mocha';
 import request from 'supertest';
+import app from '../src/App';
 
 
 describe('GET /authenticator', () => {
     it('200 Ok', async () => {
-        const {status, body} = await request(process.env.BASE_URL_TEST)
+        const {status, body} = await request(app)
             .get('/authenticator')
         expect(status).eq(200, 'Status code 200');
         expect(body[0]).to.have.property('date_time');
@@ -16,7 +17,7 @@ describe('GET /authenticator', () => {
 
 describe('POST /authenticator', () => {
     it('201 Created', async () => {
-        const {status, body} = await request(process.env.BASE_URL_TEST)
+        const {status, body} = await request(app)
             .post('/authenticator')
             .send({username: 'hemicharlythiago@gmail.com', password: 'password123456'});
 
@@ -30,7 +31,7 @@ describe('POST /authenticator', () => {
     });
 
     it('400 Bad Request: without username and password', async () => {
-        const {status, body} = await request(process.env.BASE_URL_TEST)
+        const {status, body} = await request(app)
             .post('/authenticator')
             .send();
 
@@ -51,7 +52,7 @@ describe('POST /authenticator', () => {
     });
 
     it('400 Bad Request: without username', async () => {
-        const {status, body} = await request(process.env.BASE_URL_TEST)
+        const {status, body} = await request(app)
             .post('/authenticator')
             .send({username: '', password: '123456'});
         expect(status).eq(400, 'Status code 400');
@@ -59,7 +60,7 @@ describe('POST /authenticator', () => {
     });
 
     it('400 Bad Request: without password', async () => {
-        const {status, body} = await request(process.env.BASE_URL_TEST)
+        const {status, body} = await request(app)
             .post('/authenticator')
             .send({username: 'hemicharlythiago@gmail.com', password: ''});
         expect(status).eq(400, 'Status code 400');
