@@ -12,7 +12,7 @@ describe('GET /authenticator', () => {
 
     before(() => {
         tracker.on('query', (query) => {
-            query.response([{date_time: new Date()}]);
+            query.response([{id: 1, username: 'admin'}]);
         });
     });
 
@@ -20,8 +20,12 @@ describe('GET /authenticator', () => {
         const {status, body} = await request(app)
             .get('/authenticator')
         expect(status).eq(200, 'Status code 200');
-        expect(body).to.have.property('date_time');
-        expect(body.date_time).not.eq('', 'date_time not empty');
+
+        expect(body).to.have.property('id');
+        expect(body.id).eq(1, 'id is equal 1');
+
+        expect(body).to.have.property('username');
+        expect(body.username).not.eq('', 'username not empty');
     });
 });
 

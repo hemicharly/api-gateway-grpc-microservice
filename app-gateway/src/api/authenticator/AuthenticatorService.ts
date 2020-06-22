@@ -3,7 +3,7 @@ import AuthenticatorRequest from './input/AuthenticatorRequest';
 
 export default class AuthenticatorService {
     public static async findAll(): Promise<any> {
-        const result = await DbConnect.raw('select current_timestamp() as date_time');
+        const result = await DbConnect.raw(`select 1 as 'id', 'admin' as username`);
         console.log('result: ', result[0]);
         return Promise.resolve(result[0]);
     }
