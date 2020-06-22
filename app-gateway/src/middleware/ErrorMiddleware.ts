@@ -1,17 +1,17 @@
 import {NextFunction, Request, Response} from 'express';
 import BaseErrorException from '../exceptions/BaseErrorException';
+import ServerInternalErrorException from '../exceptions/ServerInternalErrorException';
+
 
 class ErrorMiddleware {
     public errorMiddleware(error: BaseErrorException, req: Request, res: Response, next: NextFunction) {
-        const status: number = error.status || 500;
+        const statusCode: number = error.statusCode || 500;
 
-        if (status === 500) {
-            error.message = 'Error internal server';
-            error.invalidParams = undefined;
+        if (statusCode === 500) {
+            error = new ServerInternalErrorException();
         }
 
-        res.status(status).send(error);
-
+        res.status(statusCode).send(error);
     }
 }
 

@@ -1,13 +1,18 @@
 import InvalidParams from './InvalidParams';
 
-export default class BaseErrorException {
-    constructor(status: number, message?: string, invalidParams?: InvalidParams[]) {
-        this.status = status;
+
+abstract class BaseErrorException {
+    protected constructor(statusCode: number, message?: string, invalidParams?: InvalidParams[], stack?: string) {
+        this.statusCode = statusCode;
         this.message = message;
         this.invalidParams = invalidParams;
+        this.stack = stack;
     }
 
-    public status: number;
-    public message?: string;
+    public statusCode: number;
+    public message: string;
     public invalidParams?: InvalidParams[];
+    public stack?: string;
 }
+
+export default BaseErrorException;
