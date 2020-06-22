@@ -1,4 +1,12 @@
+import 'dotenv/config';
 import knex from 'knex';
+import mockDb from 'mock-knex';
 import {configDatabase} from './KnexFile';
 
-export default knex(configDatabase);
+const dbConnect = knex(configDatabase);
+
+if (process.env.NODE_ENV === 'test') {
+    mockDb.mock(dbConnect);
+}
+
+export default dbConnect;

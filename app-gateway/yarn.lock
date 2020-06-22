@@ -172,6 +172,13 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-7.0.2.tgz#b17f16cf933597e10d6d78eae3251e692ce8b0ce"
   integrity sha512-ZvO2tAcjmMi8V/5Z3JsyofMe3hasRcaw88cto5etSVMwVQfeivGAlEYmaQgceUSVYFofVjT+ioHsATjdWcFt1w==
 
+"@types/mock-knex@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@types/mock-knex/-/mock-knex-0.4.3.tgz#0a156d6f3cd51cf14058e66b114be77af2d0efc7"
+  integrity sha512-US98TERO86isWXXmx6+8IiWi6OUCr0eJlLGBhe6W0COmcuQWW/7Wf6kpRnK7DHulnQpYPIhaoR9Hsk4sycFm7g==
+  dependencies:
+    "@types/node" "*"
+
 "@types/mysql@^2.15.14":
   version "2.15.14"
   resolved "https://registry.yarnpkg.com/@types/mysql/-/mysql-2.15.14.tgz#df60e7b5f531662a8758e74b7685bed2b0ef1835"
@@ -427,6 +434,11 @@ binary-extensions@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.0.0.tgz#23c0df14f6a88077f5f986c0d167ec03c3d5537c"
   integrity sha512-Phlt0plgpIIBOGTT/ehfFnbNlfsDEiqmzE2KRXoX1bLIlir4X/MR+zSyBEkL05ffWgnRSf/DXv+WrUAVr93/ow==
+
+bluebird@^3.4.1:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
+  integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
 body-parser@1.19.0:
   version "1.19.0"
@@ -2013,7 +2025,7 @@ lodash.clone@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.clone/-/lodash.clone-4.5.0.tgz#195870450f5a13192478df4bc3d23d2dea1907b6"
   integrity sha1-GVhwRQ9aExkkeN9Lw9I9LeoZB7Y=
 
-lodash@^4.17.15:
+lodash@^4.14.2, lodash@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -2216,6 +2228,15 @@ mocha@^8.0.1:
     yargs "13.3.2"
     yargs-parser "13.1.2"
     yargs-unparser "1.6.0"
+
+mock-knex@^0.4.9:
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/mock-knex/-/mock-knex-0.4.9.tgz#af831d376500483d6499469eb847842490af04c3"
+  integrity sha512-w8BZXdKeNtPxcXu/cnJVCv+/e+Nxs8sfDulxfV/MK2+NErxbv/NYkQA7Kr15TNYA8Q51WyFTwD4bNQB9/YWotw==
+  dependencies:
+    bluebird "^3.4.1"
+    lodash "^4.14.2"
+    semver "^5.3.0"
 
 ms@2.0.0:
   version "2.0.0"

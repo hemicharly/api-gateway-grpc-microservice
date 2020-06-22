@@ -8,7 +8,7 @@
   "scripts": {
     "debug": "ts-node-dev --inspect=0.0.0.0 --respawn --transpileOnly src/Index.ts",
     "dev": "ts-node-dev --respawn --transpileOnly src/Index.ts",
-    "test": "mocha -r ts-node/register tests/**/*.spec.ts",
+    "test": "NODE_ENV=test mocha -r ts-node/register tests/**/*.spec.ts",
     "lint": "tslint --project tsconfig.json",
     "lint:fix": "yarn lint --fix",
     "clean": "rm -rf build/*",
@@ -42,6 +42,8 @@
     "@types/uuid": "^7.0.2",
     "@types/mocha": "^7.0.2",
     "@types/chai": "^4.2.11",
+    "@types/mock-knex": "^0.4.3",
+    "mock-knex": "^0.4.9",
     "supertest": "^4.0.2",
     "chai": "^4.2.0",
     "mocha": "^8.0.1",
