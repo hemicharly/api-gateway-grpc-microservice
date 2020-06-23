@@ -2,10 +2,11 @@ import 'dotenv/config';
 import {Config as Knex} from 'knex';
 import {join} from 'path';
 
-const parentKnex: string = join(__dirname, 'knex');
+const parentKnex = join(__dirname, 'knex');
 
 if (!process.env.NODE_ENV) {
     console.error('NODE_ENV is undefined');
+
     process.exit(1);
 }
 
@@ -50,4 +51,4 @@ const configDatabase: Knex = {
     }
 }
 
-export {configDatabase};
+export = configDatabase;

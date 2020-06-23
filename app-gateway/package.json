@@ -22,13 +22,13 @@
     "express": "^4.17.1",
     "grpc": "^1.24.2",
     "http-status-codes": "^1.4.0",
-    "uuid": "^7.0.2",
     "dotenv": "^8.2.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "helmet": "^3.21.3",
     "knex": "^0.21.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "uuid": "^8.1.0"
   },
   "devDependencies": {
     "@types/compression": "^1.7.0",
@@ -39,7 +39,7 @@
     "@types/supertest": "^2.0.9",
     "minimist": ">=1.2.2",
     "@types/redis": "^2.8.16",
-    "@types/uuid": "^7.0.2",
+    "@types/uuid": "^8.0.0",
     "@types/mocha": "^7.0.2",
     "@types/chai": "^4.2.11",
     "@types/mock-knex": "^0.4.3",
