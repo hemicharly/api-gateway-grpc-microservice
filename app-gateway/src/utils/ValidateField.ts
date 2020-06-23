@@ -12,7 +12,7 @@ export default class ValidateField {
         if (validationErrors !== undefined && validationErrors.length > 0) {
             const invalidParams: InvalidParams[] = validationErrors.map((item: ValidationError) => {
                 const errors: InvalidParams = {
-                    code: 'invalid-params',
+                    code: 'FIELD_REQUIRED',
                     message: Object.values(item.constraints).toString()
                 };
                 return errors;
