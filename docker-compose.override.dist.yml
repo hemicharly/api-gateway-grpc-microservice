@@ -9,22 +9,6 @@ services:
       GRPC_SERVER_2: grpc-customers2:50051
       API_KEY: your key amplify nginx
 
-  api-gateway-grcp:
-    environment:
-      BASE_URL_TEST: http://api-gateway-grcp:3005
-      NODE_ENV: development
-      DEBUG: 0
-      TZ: "America/Fortaleza"
-      MAX_MEMORY_RESTART: 384M
-      URL_CUSTOMERS: your ip host:8085
-      URL_USERS: grpc-users:50052
-      URL_PRODUCTS: grpc-products:50053
-      URL_ORDERS: grpc-orders:50054
-      DB_HOST: mysql-api-gateway-grcp
-      DB_DATABASE: api-gateway-grcp
-      DB_USER_NAME: root
-      DB_PASSWORD: root@2020
-
   mysql-api-gateway-grcp:
     container_name: mysql-api-gateway-grcp
     image: mysql:5.7

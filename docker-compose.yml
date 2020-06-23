@@ -11,8 +11,8 @@ services:
     ports:
       - 40051:40051
     volumes:
-      - ./app-customers:/opt/app
-    entrypoint: ["entrypoint-microservices.sh"]
+      - ./app-customers:/application
+    entrypoint: ["entrypoint-authenticator.sh"]
 
   grpc-customers2:
     container_name: grpc-customers2
@@ -24,8 +24,8 @@ services:
     ports:
       - 50051:50051
     volumes:
-      - ./app-customers:/opt/app
-    entrypoint: ["entrypoint-microservices.sh"]
+      - ./app-customers:/application
+    entrypoint: ["entrypoint-authenticator.sh"]
 
   grpc-users:
     container_name: grpc-users
@@ -35,8 +35,8 @@ services:
     ports:
       - 50052:50052
     volumes:
-      - ./app-users:/opt/app
-    entrypoint: ["entrypoint-microservices.sh"]
+      - ./app-users:/application
+    entrypoint: ["entrypoint-authenticator.sh"]
 
   grpc-products:
     container_name: grpc-products
@@ -82,18 +82,22 @@ services:
     build:
       context: .
       dockerfile: docker/nodejs/Dockerfile
+    env_file:
+      - .env
     ports:
       - 3005:3005
     links:
-      - nginx-grpc
-      - grpc-users
-      - grpc-products
-      - grpc-orders
+      - mysql-api-gateway-grcp
+#      - nginx-grpc
+#      - grpc-users
+#      - grpc-products
+#      - grpc-orders
     depends_on:
-      - nginx-grpc
-      - grpc-users
-      - grpc-products
-      - grpc-orders
+      - mysql-api-gateway-grcp
+#      - nginx-grpc
+#      - grpc-users
+#      - grpc-products
+#      - grpc-orders
     volumes:
-      - ./app-gateway:/opt/app
+      - ./app-gateway:/application
     entrypoint: ["entrypoint-server.sh"]

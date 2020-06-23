@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  yarn:
+    container_name: yarn
+    build:
+      context: .
+      dockerfile: docker/nodejs/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./app-gateway:/application
+    entrypoint: yarn

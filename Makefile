@@ -1,3 +1,8 @@
+# Execute build docker api-gateway-grcp and docker-compose.cli.yml
+build:
+	docker-compose build api-gateway-grcp &&\
+	docker-compose -f docker-compose.cli.yml build --pull
+
 # Execute all application in mode development
 dev:
 	docker-compose up --build

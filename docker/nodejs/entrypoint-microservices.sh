@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-cd /opt/app
+cd $APP_HOME
 
 echo "Install packaged..."
 yarn
