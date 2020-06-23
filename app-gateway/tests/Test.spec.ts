@@ -38,6 +38,8 @@ describe('GET /authenticator', () => {
         const {status, body} = await request(app)
             .get('/authenticator')
         expect(status).eq(500, 'Status code 500');
+        expect(body).to.have.property('message');
+        expect(body.message).not.eq('', 'message not empty');
     });
 
 });
@@ -46,6 +48,7 @@ describe('POST /authenticator', () => {
     it('201 Created', async () => {
         const {status, body} = await request(app)
             .post('/authenticator')
+            // tslint:disable-next-line:no-hardcoded-credentials
             .send({username: 'test@gmail.com', password: 'password123456'});
 
         expect(status).eq(201, 'Status code 201');
@@ -81,11 +84,13 @@ describe('POST /authenticator', () => {
     it('400 Bad Request: without username', async () => {
         const {status, body} = await request(app)
             .post('/authenticator')
+            // tslint:disable-next-line:no-hardcoded-credentials
             .send({username: '', password: '123456'});
         expect(status).eq(400, 'Status code 400');
         expect(body.invalidParams[0].message).eq('username is required', 'invalidParams[0].message password is required');
     });
 
+    // tslint:disable-next-line:no-identical-functions
     it('400 Bad Request: without password', async () => {
         const {status, body} = await request(app)
             .post('/authenticator')
@@ -103,6 +108,7 @@ describe('POST /authenticator/create', () => {
             .send({
                     name: 'teste',
                     email: 'teste@gmail.com',
+                    // tslint:disable-next-line:no-hardcoded-credentials
                     password: 'password123456'
                 }
             );
