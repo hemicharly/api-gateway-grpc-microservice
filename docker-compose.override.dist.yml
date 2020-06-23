@@ -9,6 +9,20 @@ services:
       GRPC_SERVER_2: grpc-customers2:50051
       API_KEY: your key amplify nginx
 
+  api-gateway-grcp:
+    links:
+      - mysql-api-gateway-grcp
+      - nginx-grpc
+      - grpc-users
+      - grpc-products
+      - grpc-orders
+    depends_on:
+      - mysql-api-gateway-grcp
+      - nginx-grpc
+      - grpc-users
+      - grpc-products
+      - grpc-orders
+
   mysql-api-gateway-grcp:
     container_name: mysql-api-gateway-grcp
     image: mysql:5.7

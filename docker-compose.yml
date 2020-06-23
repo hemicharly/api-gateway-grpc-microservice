@@ -86,18 +86,6 @@ services:
       - .env
     ports:
       - 3005:3005
-    links:
-      - mysql-api-gateway-grcp
-#      - nginx-grpc
-#      - grpc-users
-#      - grpc-products
-#      - grpc-orders
-    depends_on:
-      - mysql-api-gateway-grcp
-#      - nginx-grpc
-#      - grpc-users
-#      - grpc-products
-#      - grpc-orders
     volumes:
       - ./app-gateway:/application
     entrypoint: ["entrypoint-server.sh"]
