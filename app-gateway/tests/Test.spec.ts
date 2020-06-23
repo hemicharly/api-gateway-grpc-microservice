@@ -8,12 +8,18 @@ import app from '../src/App';
 const tracker = mockKnex.getTracker();
 
 describe('GET /authenticator', () => {
-    tracker.install();
-
     before(() => {
-        tracker.on('query', (query) => {
-            query.response([{id: 1, username: 'admin'}]);
+        tracker.install();
+        tracker.on('query', (query, step) => {
+            [
+                () => query.response([{id: 1, username: 'admin'}]),
+                () => query.response(undefined)
+            ][step - 1]();
         });
+    });
+
+    after(() => {
+        tracker.uninstall();
     });
 
     it('200 Ok', async () => {
@@ -27,13 +33,20 @@ describe('GET /authenticator', () => {
         expect(body).to.have.property('username');
         expect(body.username).not.eq('', 'username not empty');
     });
+
+    it('500 Server Internal Error', async () => {
+        const {status, body} = await request(app)
+            .get('/authenticator')
+        expect(status).eq(500, 'Status code 500');
+    });
+
 });
 
 describe('POST /authenticator', () => {
     it('201 Created', async () => {
         const {status, body} = await request(app)
             .post('/authenticator')
-            .send({username: 'hemicharlythiago@gmail.com', password: 'password123456'});
+            .send({username: 'test@gmail.com', password: 'password123456'});
 
         expect(status).eq(201, 'Status code 201');
 
@@ -81,4 +94,18 @@ describe('POST /authenticator', () => {
         expect(body.invalidParams[0].message).eq('password is required', 'invalidParams[0].message password is required');
     });
 
+});
+
+describe('POST /authenticator/create', () => {
+    it('201 Created', async () => {
+        const {status, body} = await request(app)
+            .post('/authenticator/create')
+            .send({
+                    name: 'teste',
+                    email: 'teste@gmail.com',
+                    password: 'password123456'
+                }
+            );
+        expect(status).eq(201, 'Status code 201');
+    });
 });
