@@ -1,6 +1,6 @@
 import ValidateField from '../../utils/ValidateField';
 import AuthenticatorRequest from './input/AuthenticatorRequest';
-import UserCreateRequest from "./input/UserCreateRequest";
+import UserCreateRequest from './input/UserCreateRequest';
 
 
 export default class AuthenticatorTransformer {
