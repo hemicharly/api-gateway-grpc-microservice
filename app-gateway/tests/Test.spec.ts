@@ -52,12 +52,12 @@ describe('POST /authenticator', () => {
             .send({username: 'test@gmail.com', password: 'password123456'});
 
         expect(status).eq(201, 'Status code 201');
+        expect(body).to.have.property('output');
+        expect(body.output).to.have.property('access_token');
+        expect(body.output.access_token).not.eq('', 'access_token not empty');
 
-        expect(body).to.have.property('access_token');
-        expect(body.access_token).not.eq('', 'access_token not empty');
-
-        expect(body).to.have.property('expired_in');
-        expect(body.expired_in).not.eq('', 'expired_in not empty');
+        expect(body.output).to.have.property('expired_in');
+        expect(body.output.expired_in).not.eq('', 'expired_in not empty');
     });
 
     it('400 Bad Request: without username and password', async () => {
