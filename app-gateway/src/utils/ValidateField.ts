@@ -1,8 +1,8 @@
+import {plainToClass} from 'class-transformer';
+import {ClassType} from 'class-transformer/ClassTransformer';
 import {validate, ValidationError} from 'class-validator';
 import InvalidParams from '../exceptions/InvalidParams';
 import InvalidParamsException from '../exceptions/InvalidParamsException';
-import {ClassType} from "class-transformer/ClassTransformer";
-import {plainToClass} from "class-transformer";
 
 
 export default class ValidateField {

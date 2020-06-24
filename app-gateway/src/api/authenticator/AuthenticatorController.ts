@@ -2,8 +2,6 @@ import {NextFunction, Request, Response} from 'express';
 import * as HttpStatus from 'http-status-codes';
 import AuthenticatorService from './AuthenticatorService';
 import AuthenticatorTransformer from './AuthenticatorTransformer';
-import AuthenticatorRequest from './input/AuthenticatorRequest';
-import UserCreateRequest from './input/UserCreateRequest';
 
 
 class AuthenticatorController {
@@ -19,11 +17,13 @@ class AuthenticatorController {
 
     public async token(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const authenticatorRequest = await AuthenticatorTransformer.toApi(AuthenticatorRequest, req.body);
+            const authenticatorRequest = await AuthenticatorTransformer.inputAuthenticatorRequestToApi(req.body);
+
             const response = {
                 access_token: 'gfsdgfdsgfdsgrtfdsgre-fdsggfdsgfdgsd4534gfhgfd',
                 expired_in: 123456
             }
+
             res.status(HttpStatus.CREATED).send({message: 'Token generator with success', output: response});
         } catch (error) {
             next(error);
@@ -32,7 +32,7 @@ class AuthenticatorController {
 
     public async create(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const userCreateRequest = await AuthenticatorTransformer.toApi(UserCreateRequest, req.body);
+            const userCreateRequest = await AuthenticatorTransformer.inputUsersCreateRequestToApi(req.body);
             await AuthenticatorService.create(userCreateRequest);
             res.status(HttpStatus.CREATED).send({message: 'User created with success', output: userCreateRequest});
         } catch (error) {
