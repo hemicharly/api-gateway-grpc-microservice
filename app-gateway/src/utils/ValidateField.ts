@@ -8,13 +8,12 @@ export default class ValidateField {
     public static async validateInput<T extends Object>(inputData: T): Promise<void> {
         const validationErrors: ValidationError[] = await validate(inputData);
 
-        if (validationErrors !== undefined && validationErrors.length > 0) {
+        if (validationErrors && validationErrors.length > 0) {
             const invalidParams: InvalidParams[] = validationErrors.map((item: ValidationError) => {
-                const errors: InvalidParams = {
+                return  {
                     code: 'FIELD_REQUIRED',
                     message: Object.values(item.constraints).toString()
                 };
-                return errors;
             })
             throw new InvalidParamsException(invalidParams);
         }
