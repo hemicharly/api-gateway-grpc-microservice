@@ -13,5 +13,5 @@ export default class InvalidParamsException extends BaseErrorException {
         });
     }
 
-    public invalidParams: InvalidParams[]
+    public invalidParams: InvalidParams[];
 }

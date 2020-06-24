@@ -1,18 +1,26 @@
-import DbConnect from '../../config/database/DbConnect';
-import AuthenticatorRequest from './input/AuthenticatorRequest';
+import {v4 as uuidv4} from 'uuid';
+import AuthenticatorRepository from './AuthenticatorRepository';
+import UserCreateRequest from './input/UserCreateRequest';
+import Users from './model/Users';
 
-export default class AuthenticatorService {
-    public static async findAll(): Promise<any> {
-        const result = await DbConnect.raw(`select 1 as 'id', 'admin' as username`);
-        console.log('result: ', result[0]);
-        return Promise.resolve(result[0]);
+
+class AuthenticatorService {
+
+    public async findAll(): Promise<any[]> {
+        return AuthenticatorRepository.findAll();
     }
 
-    public static async token(authenticatorRequest: AuthenticatorRequest): Promise<any> {
-        console.log('token: ', authenticatorRequest);
-        return {
-            access_token: 'gfsdgfdsgfdsgrtfdsgre-fdsggfdsgfdgsd4534gfhgfd',
-            expired_in: 123456
-        }
+    public async create(userCreateRequest: UserCreateRequest): Promise<void> {
+        console.log(userCreateRequest)
+        const users: Users = {
+            id: uuidv4(),
+            name: userCreateRequest.name,
+            email: userCreateRequest.email,
+            password: userCreateRequest.password,
+            role: 'admin'
+        };
+        await AuthenticatorRepository.insert(users);
     }
 }
+
+export default new AuthenticatorService();
