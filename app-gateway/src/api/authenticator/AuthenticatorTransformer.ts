@@ -1,12 +1,13 @@
 import {plainToClass} from 'class-transformer';
 import {ClassType} from 'class-transformer/ClassTransformer';
 import ValidateField from '../../utils/ValidateField';
+import AuthenticatorRequest from "./input/AuthenticatorRequest";
 
 
 export default class AuthenticatorTransformer {
 
-    public static async toApi<T>(object: ClassType<T>, inputData: any): Promise<T> {
-        const inputToApi: T = plainToClass(object, inputData, { excludeExtraneousValues: true });
+    public static async toApi(inputData: any): Promise<AuthenticatorRequest> {
+        const inputToApi = await ValidateField.toModel(AuthenticatorRequest, inputData);
         await ValidateField.validateInput(inputToApi);
         return Promise.resolve(inputToApi);
     }
