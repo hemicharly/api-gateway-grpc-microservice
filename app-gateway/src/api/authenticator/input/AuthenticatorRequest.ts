@@ -1,16 +1,12 @@
-import {Exclude} from 'class-transformer';
+import { Expose} from 'class-transformer';
 import {IsNotEmpty} from 'class-validator';
 
 export default class AuthenticatorRequest {
-
-    constructor(username: string, password: string) {
-        this.username = username;
-        this.password = password;
-    }
-
     @IsNotEmpty({message: 'username is required'})
+    @Expose()
     public username: string;
 
     @IsNotEmpty({message: 'password is required'})
+    @Expose()
     public password: string;
 }

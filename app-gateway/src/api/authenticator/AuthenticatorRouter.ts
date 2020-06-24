@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get('/',  AuthenticatorController.findAll);
 router.post('/',  AuthenticatorController.token);
-router.post('/create',  AuthenticatorController.add);
+router.post('/create',  AuthenticatorController.create);
 
 export default router;

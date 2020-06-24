@@ -1,5 +1,3 @@
-import {plainToClass} from 'class-transformer';
-import {ClassType} from 'class-transformer/ClassTransformer';
 import {validate, ValidationError} from 'class-validator';
 import InvalidParams from '../exceptions/InvalidParams';
 import InvalidParamsException from '../exceptions/InvalidParamsException';
@@ -7,8 +5,8 @@ import InvalidParamsException from '../exceptions/InvalidParamsException';
 
 export default class ValidateField {
 
-    public static async validateInput<T, V>(object: ClassType<T>, inputData: V): Promise<void> {
-        const validationErrors: ValidationError[] = await validate(plainToClass(object, inputData));
+    public static async validateInput<T extends Object>(inputData: T): Promise<void> {
+        const validationErrors: ValidationError[] = await validate(inputData);
 
         if (validationErrors !== undefined && validationErrors.length > 0) {
             const invalidParams: InvalidParams[] = validationErrors.map((item: ValidationError) => {
