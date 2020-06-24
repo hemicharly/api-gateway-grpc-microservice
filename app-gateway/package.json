@@ -16,6 +16,7 @@
     "start": "pm2-runtime start ecosystem.config.js --env production"
   },
   "dependencies": {
+    "reflect-metadata":"^0.1.13",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.12.2",
     "@grpc/proto-loader": "^0.5.3",
