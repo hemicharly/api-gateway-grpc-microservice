@@ -1,26 +1,29 @@
-import ValidateField from '../../utils/ValidateField';
+import ClassValidator from '../../utils/ClassValidator';
 import AuthenticatorRequest from './input/AuthenticatorRequest';
 import UserCreateRequest from './input/UserCreateRequest';
 
 
 export default class AuthenticatorTransformer {
 
-    public static async inputAuthenticatorRequestToApi(inputData: any): Promise<AuthenticatorRequest> {
-        const inputToModel = await ValidateField.toModel(AuthenticatorRequest, inputData);
-        await ValidateField.validateInput(inputToModel);
-
-        return Promise.resolve(inputToModel);
+    public static async inputAuthenticatorRequestToApi(object: any): Promise<AuthenticatorRequest> {
+        const authenticatorRequest = await ClassValidator.transformerToModel(AuthenticatorRequest, object);
+        await ClassValidator.validateInput(authenticatorRequest);
+        return Promise.resolve(authenticatorRequest);
     }
 
-    public static async inputUsersCreateRequestToApi(inputData: any): Promise<UserCreateRequest> {
-        const inputToModel = await ValidateField.toModel(UserCreateRequest, inputData);
-        await ValidateField.validateInput(inputToModel);
+    public static async inputUsersCreateRequestToApi(object: any): Promise<UserCreateRequest> {
+        const userCreateRequest = await ClassValidator.transformerToModel(UserCreateRequest, object);
 
-        return Promise.resolve(inputToModel);
+        const validate1 = ClassValidator.validateInput(userCreateRequest);
+        const validate2 =  ClassValidator.validateInput(userCreateRequest.roles);
+
+        await Promise.all([validate1, validate2]);
+
+        return Promise.resolve(userCreateRequest);
     }
 
-    public static async fromApi(inputData: any): Promise<any> {
-        return Promise.resolve(inputData);
+    public static async fromApi(object: any): Promise<any> {
+        return Promise.resolve(object);
     }
 
 }
