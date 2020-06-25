@@ -9,5 +9,10 @@ services:
     env_file:
       - .env
     volumes:
-      - ./app-gateway:/application
+      - ./app-gateway:/application:cached
+      - yarn-cache:/root/.cache/yarn/v1:cached
     entrypoint: yarn
+
+volumes:
+  yarn-cache:
+    name: yarn-cache

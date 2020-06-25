@@ -86,6 +86,3 @@ services:
       - .env
     ports:
       - 3005:3005
-    volumes:
-      - ./app-gateway:/application
-    entrypoint: ["entrypoint-server.sh"]

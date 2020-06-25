@@ -22,6 +22,11 @@ services:
       - grpc-users
       - grpc-products
       - grpc-orders
+    volumes:
+      - ./app-gateway:/application:cached
+      - yarn-cache:/root/.cache/yarn/v1:cached
+    entrypoint: ["entrypoint-server.sh"]
+
 
   mysql-api-gateway-grcp:
     container_name: mysql-api-gateway-grcp
@@ -38,3 +43,5 @@ services:
 
 volumes:
   dbdata: ~
+  yarn-cache:
+    name: yarn-cache
