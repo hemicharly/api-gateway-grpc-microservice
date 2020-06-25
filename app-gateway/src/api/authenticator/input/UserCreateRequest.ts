@@ -1,17 +1,25 @@
-import {Expose} from 'class-transformer';
-import {IsNotEmpty} from 'class-validator';
+import {Expose, Type} from 'class-transformer';
+import {IsNotEmpty, IsNotEmptyObject} from 'class-validator';
+import 'reflect-metadata';
+import RolesRequest from './RolesRequest';
 
 export default class UserCreateRequest {
 
-    @IsNotEmpty({message: 'name is required'})
+    @IsNotEmpty()
     @Expose()
     public name: string;
 
-    @IsNotEmpty({message: 'email is required'})
+    @IsNotEmpty()
     @Expose()
     public email: string;
 
-    @IsNotEmpty({message: 'password is required'})
+    @IsNotEmpty()
     @Expose()
     public password: string;
+
+    @IsNotEmptyObject()
+    @Type(() => RolesRequest)
+    @Expose()
+    public roles: RolesRequest;
 }
+
