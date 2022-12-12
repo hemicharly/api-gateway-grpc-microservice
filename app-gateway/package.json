@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@grpc/proto-loader": "^0.5.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "grpc": "^1.24.2",
     "http-status-codes": "^1.4.0",
     "uuid": "^7.0.2",
